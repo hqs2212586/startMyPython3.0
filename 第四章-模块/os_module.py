@@ -52,7 +52,7 @@ os.path.dirname()  # 获取当前路径名
 os.path.abspath()   # 获取绝对路径
 os.path.basename()  # 获取文件名
 
-os.system()         # 执行shell命令
+os.system()         # 执行shell命令，保存的是执行结果，0或1
 """
 >>> os.system('df -h')
 Filesystem      Size   Used  Avail Capacity  iused    ifree %iused  Mounted on
@@ -62,6 +62,9 @@ map -hosts       0Bi    0Bi    0Bi   100%        0        0  100%   /net
 map auto_home    0Bi    0Bi    0Bi   100%        0        0  100%   /home
 0   # linux命令执行返回值
 """
+os.popen('df -h')  # 将系统交互内容保存到内存中
+
+
 
 os.getenv("HOME")   # 读取操作系统环境变量HOME的值
 os.environ   # 返回操作系统所有的环境变量
@@ -151,3 +154,4 @@ huangqiushi      5162   0.0  0.0  2444652   1072 s000  S+    6:10下午   0:00.0
 huangqiushi      5141   0.0  0.0  2434824    364 s000  S     6:04下午   0:00.00 sleep 100000
 >>> os.kill(5164,signal.SIGILL)
 """
+
