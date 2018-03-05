@@ -69,7 +69,7 @@ b' 27G\t.\n'
     cwd：用于设置子进程的当前目录
     env：用于指定子进程的环境变量。如果env = None，子进程的环境变量将从父进程中继承。
 """
-# Popen发起一个新进程不影响子程序,run是当前进程执行，Popen是后台执行
+# Popen发起一个新进程不影响主程序,run是当前进程执行，Popen是后台执行
 """
 def sayhi():
     print('run...hahah')

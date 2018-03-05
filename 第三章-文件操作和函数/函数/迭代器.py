@@ -16,6 +16,7 @@ isinstance(100, Iterable)  # 返回False
 
 """
 定义：可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator
+在Python中，这种一边循环一边计算的机制，称为生成器：generator。
     生成器是迭代器的一种：
     1、生成器都是迭代器对象，但list\dict\str虽然是可迭代对象，但不是迭代器。
     2、把list\dict\str等可迭代对象变成迭代器可以使用iter()函数
