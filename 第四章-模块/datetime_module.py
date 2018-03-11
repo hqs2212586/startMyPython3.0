@@ -52,3 +52,5 @@ datetime.datetime(2017, 4, 26, 13, 45, 26, 863002)
 >>> n.replace(year=2017,month=4,day=13)
 datetime.datetime(2017, 4, 13, 13, 45, 26, 863002)
 """
+expire_year = time.localtime()[0]   # 当前年份
+expire_date = datetime.datetime.now().replace(year=expire_year+10).strftime('%Y-%m-%d')

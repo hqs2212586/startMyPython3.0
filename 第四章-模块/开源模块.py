@@ -1,4 +1,5 @@
 
+import paramiko
 """
 开源模块安装、使用
     https://pypi.python.org/pypi是Python的开源模块库。
@@ -18,7 +19,6 @@
 pip默认连接国外的Python官方服务器下载，使用国内豆瓣源，数据会定期同步国外官网
 pip install -i http://pypi.douban.com/simple/ paramiko --trusted-host pypi.douban.com
 """
-import paramiko
 
 ssh = paramiko.SSHClient
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

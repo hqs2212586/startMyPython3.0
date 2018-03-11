@@ -33,6 +33,7 @@ def login(func):
 def home():
     print("首页".center(40,'-'))
 
+
 @login
 def america(name):
     print("欧美专区".center(40,'-'))

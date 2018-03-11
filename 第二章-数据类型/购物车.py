@@ -25,30 +25,30 @@ welcome_head = "欢迎登录购物平台"
 print(welcome_head.center(50,'-'))
 
 # 判断用户历史文件是否存在，若不存在创建用户历史文件,存在则打开文件
-file = os.path.exists('/Users/huangqiushi/Desktop/python/user_info.txt')
+file = os.path.exists('user_info.txt')
 if file == True:
     pass
 else:
-    file = open(file='/Users/huangqiushi/Desktop/python/user_info.txt', mode='w', encoding='utf-8')
+    file = open(file='user_info.txt', mode='w', encoding='utf-8')
 
 # 购物车用户信息文件保存用户名、密码、工资
 user_info = []
-with open(file='/Users/huangqiushi/Desktop/python/user_info.txt', mode='r+', encoding='utf-8') as f:
+with open(file='user_info.txt', mode='r+', encoding='utf-8') as f:
     for line in f.readlines(): # readlines读取所有行，并返回字符串
-        dic_f = eval(line.strip())  # 将字符串转化为字典
+        dic_f = eval(line.strip(','))  # 将字符串转化为字典
         user_info.append(dic_f)    # 将字典添加进数组中
     f.close()
 
 
 # 用户登录输入用户名密码和工资注册购物平台
 # 文本中每一行记录一条字典，包含用户名、密码、工资三条信息
-new_user={} # 集合
+new_user = {}  # 集合
 flag = True
 while flag:
     user = input("请输入用户名：")
     password = input("请输入密码：")
     i = 0
-    while i < len(user_info):
+    while i < 3:
         if user == user_info[i]['name']:
             if password == user_info[i]['password']:
                 salary = user_info[i]['salary']

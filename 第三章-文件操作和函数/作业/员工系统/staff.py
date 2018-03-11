@@ -195,7 +195,8 @@ def syntax_find(data_set,query_clause):
         print(tabulate(reformat_data_set,headers=filter_cols,tablefmt="grid"))   # 美化打印方式
     print_log("匹配到%s条数据！"%len(data_set))
 
-def syntax_delete(data_set,query_clause):
+
+def syntax_delete(data_set, query_clause):
     """
 
     :param data_set:  matched_records=[['3', 'Rain Wang', '19', '13451054608', '开发部', '2017-04-01\n']]
@@ -212,6 +213,7 @@ def syntax_delete(data_set,query_clause):
     print(tabulate(STAFF_DATA, headers=COLUMNS))
     save_db()
     print_log("成功从staff_table表删除1条记录")
+
 
 def syntax_update(data_set,query_clause):
     """
@@ -287,12 +289,10 @@ def syntax_parser(cmd):    # e.g cmd = 'del from staff where  id=3'
     if cmd.split()[0] in ('find','add','del','update'):
         if 'where' in cmd:    # 如果命令中有where返回true
             query_clause,where_clause = cmd.split("where")  # query_clause='del from staff '; where_clause='  id=3'
-            matched_records = syntax_where(where_clause)   # <class 'list'>: [['1', 'Alex Li', '19', '13651054608', '开发部', '2013-04-01\n'], ['2', 'Jack Wang', '19', '13451024608', 'HR', '2015-01-07\n'], ['3', 'Rain Wang', '19', '13451054608', '开发部', '2017-04-01\n'], ['4', 'Mack Qiao', '19', '15653354208', 'Sales', '2016-02-01\n'], ['5', 'Rachel Chen', '19', '13351024606', '开发部', '2013-03-16\n'], ['6', 'Eric Liu', '19', '18531054602', 'Marketing', '2012-12-01\n'], ['7', 'Chao Zhang', '19', '13235324334', 'Administration', '2011-08-08\n'], ['8', 'Kevin Chen', '19', '13151054603', 'Sales', '2013-04-01\n'], ['9', 'Shit Wen', '19', '13351024602', '开发部', '2017-07-03\n'], ['10', 'Shanshan Du', '19', '13698424612', 'Operation', '2017-07-02']]
+            matched_records = syntax_where(where_clause)
         else:
-        # query_clause,where_clause = cmd.split("where")  # 前半部分
-        # print(query_clause,where_clause)
             matched_records = []    # 命令中没有where
-            for index,staff_id in enumerate(STAFF_DATA['id']):  # staff_id索引
+            for index, staff_id in enumerate(STAFF_DATA['id']):  # staff_id索引
                 record = []           # record = {list}<class 'list'>: ['1','Alex Li'...,'2013-04-01\n']
                 for col in COLUMNS:   # col = {str}'id'('name'/.../'enrolled_data')
                     record.append(STAFF_DATA[col][index])
