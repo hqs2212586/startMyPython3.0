@@ -1,10 +1,13 @@
 def home():
     print("首页".center(40,'-'))
+
 def america():
     #login()  # 改写删除该行
     print("欧美专区".center(40,'-'))
+
 def japan():
     print("日韩专区".center(40,'-'))
+
 def henan():
     #login()  # 改写删除该行
     print("河南专区".center(40,'-'))
@@ -19,7 +22,7 @@ def henan():
 #     _password = 'abc!23' # 假设这是DB里存的用户信息
 #     global user_status
 #
-#     if user_status == False:  # 用户状态为True时可以访问视频
+#     if user_status is False:  # 用户状态为True时可以访问视频
 #         username = input("user:")
 #         password = input("password:")
 #
@@ -37,6 +40,24 @@ def henan():
         开放：对现有功能的扩展开放
     代码改写:
 '''
+# user_status = False
+# def login(func):
+#     _username = "alex"
+#     _password = "abc!23"
+#     global user_status
+#
+#     if user_status == False:
+#         username = input("user:")
+#         password = input("password:")
+#         if username == _username and password == _password:
+#             print("welcome login...")
+#             user_status = True
+#         else:
+#             print("wrong username or password!")
+#
+#     if user_status == True:
+#         func()
+
 user_status = False
 def login(func):
     def inner():
@@ -52,21 +73,20 @@ def login(func):
                 user_status = True
             else:
                 print("wrong username or password!")
-        else:
-            print("wrong username or password!")
         if user_status:
             func()   # henan()——老的河南函数
-    return inner # 加括号执行，不加括号返回内存地址
+    return inner  # 加括号执行，不加括号返回内存地址
 
 # login(henan)   # 需要验证就调用login,把需要验证的功能，当做一个参数传给login
-# ogin(america)
+# login(america)
 ''' 
-    以上改写也不好，修改了调用方式，需要认真的模块都讲需要修改调用方式。
+    以上改写也不好，修改了调用方式，需要认证的模块都需要修改调用方式。
     需要不改变原功能代码，又不改变原有调用方式，还能加上认证的代码改写。
 '''
-# henan = login(henan)  # 返回内存地址，通过这个和login内的inner函数实现了扩展
-# print(henan)
-# henan()  # inner()执行
+# home()
+# henan = login(henan)
+# america = login(america)
+# henan()
 '''
     henan = login(henan)可以改写为如下代码：
 '''
@@ -74,3 +94,5 @@ def login(func):
 def hubei():
     #login()  # 改写删除该行
     print("湖北专区".center(40,'-'))
+
+hubei()

@@ -19,6 +19,8 @@
     LEGB：locals  enclosing(相邻的上一级)  globals   __builtins__
 '''
 n = 10
+
+
 def fun1():
     n = 20
     print('func1',n)
@@ -31,4 +33,6 @@ def fun1():
             print("func3",n)    # locals没有，先找相邻上一级作用域
         func3()  # 20
     fun2()  # 30
+
+
 fun1()  # 30

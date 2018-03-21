@@ -17,40 +17,39 @@
 def fib_g(max):
     n, a, b = 0, 0, 1
     while n < max:
-        print('before yield')
+        # print('before yield')
         yield b   # yield 把函数的执行过程冻结在这一步，并且把b的值返回给外面的next()
-        print(b)
+        # print(b)
         a, b = b, a+b
         n = n + 1
     return 'done'
-f = fib_g(15)  # 将函数转换为生成器，有了yeild后，函数名(参数)根本不执行
+# f = fib_g(15)  # 将函数转换为生成器，有了yeild后，函数名(参数)根本不执行
 
 # 生成器使用意义：可以将函数执行中的状态、数据返回到外部来
-next(f) # first time call next()
-'''
-before yield
-'''
-next(f)
-'''
-before yield
-1
-before yield
-'''
-next(f)
-'''
-before yield
-1
-before yield
-1
-before yield
-'''
-next(f)
-'''
-before yield
-1
-before yield
-1
-before yield
-2
-before yield
-'''
+# next(f) # first time call next()
+
+
+# data = fib_g(10)
+# print(data)
+#
+# print(data.__next__())
+# print(data.__next__())
+# print("干点别的事")
+# print(data.__next__())
+# print(data.__next__())
+# print(data.__next__())
+# print(data.__next__())
+
+# for n in fib_g(6):
+#     print(n)
+
+g = fib_g(6)
+while True:
+    try:
+        x = next(g)
+        print('g', x)
+    except StopIteration as e:
+        print('Generator return value:', e.value)
+        break
+
+

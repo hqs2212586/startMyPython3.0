@@ -1,10 +1,11 @@
 
 
 # print()   # 打印
-# >>> s = 'hey, my name is alex\n, from shandong'
-# >>> print('haifeng','gangsf',sep='<-')
-# haifeng<-gangsf
-
+"""
+>>> s = 'hey, my name is alex\n, from shandong'
+>>> print('haifeng','gangsf',sep='<-')
+haifeng<-gangsf
+"""
 
 msg = "回到最初的起点"
 f = open("print_tofile","w")

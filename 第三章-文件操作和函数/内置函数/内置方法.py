@@ -5,7 +5,7 @@ dict() # 把数据转为字典
 help() # 帮助
 min()  # 找出最小值
 max()  # 找出最大值
-setattr()  #
+setattr()  # 设置属性值
 bool() # 判断True or False(bool(0)、bool(Flase)、bool([]))
 all()  # 可循环的数据集合每个元素bool()均为True；或者空列表也是True
 any()  # 任意一个值是True即返回True
@@ -17,10 +17,11 @@ sorted()  # 列表排序sorted(li)等同于li.sort()
 '''
 '''
 d = {}
-for i in range(20):
+for i in range(10):
     d[i] = i - 50
+print(d)
 d.items() # 字典转化为数组
-sorted(d.items)
+sorted(d.items())
 sorted(d.items(), key = lambda x:x[1])
 sorted(d.items(), key = lambda x:x[1],reverse=True)
 '''
@@ -28,7 +29,7 @@ ascii(2)  # 只能返回ascii码
 enumerate([3,2,13,4])  # 返回列表的索引
 input('dasd')
 oct(10)  # 转八进制
-# staticmethod()
+staticmethod() #
 bin(10)  # 转二进制
 
 # eval()  # 字符串转代码（只能处理单行代码）（可以拿到返回值）
@@ -96,11 +97,33 @@ map(lambda x:x*x , [1,2,3,4,5])    # 根据提供的函数对指定序列做映�
 '''
 >>> list(map(lambda x:x*x , [1,2,3,4,5]))
 [1, 4, 9, 16, 25]
+
+>>>def square(x) :            # 计算平方数
+...     return x ** 2
+... 
+>>> map(square, [1,2,3,4,5])   # 计算列表各个元素的平方
+[1, 4, 9, 16, 25]
+>>> map(lambda x: x ** 2, [1, 2, 3, 4, 5])  # 使用 lambda 匿名函数
+[1, 4, 9, 16, 25]
+ 
+# 提供了两个列表，对相同位置的列表数据进行相加
+>>> map(lambda x, y: x + y, [1, 3, 5, 7, 9], [2, 4, 6, 8, 10])
+[3, 7, 11, 15, 19]
 '''
+
 filter() # 将符合条件的值过滤出来
+# filter(function, iterable)
 '''
 >>> list(filter(lambda x: x>3, [1,2,3,4,5]))
 [4, 5]
+
+import math
+def is_sqr(x):
+    return math.sqrt(x) % 1 == 0
+ 
+newlist = filter(is_sqr, range(1, 101))
+print(newlist)
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 '''
 import functools
 functools.reduce()
@@ -122,7 +145,7 @@ format()
 frozenset()  # 不可变集合
 '''
 >>> s = {12,3,4,4}
->>> s.discard(3)
+>>> s.discard(3)   # 集合删除元素，没有也不会报错
 >>> s
 {12,4}
 >>> s = frozenset(s)
@@ -145,7 +168,16 @@ zip()  # 可将两个数组一一对应组成元祖
 [(1, 'a'), (2, 'b'), (3, 'c')]
 '''
 compile() # 编译代码
+"""
+f = open("print.py")
+data =compile(f.read(),'','exec')  # 参数：source(字符串对象), filename(代码文件名), mode(编译代码种类exec\eval\single)
+exec(data)
 
+>>> str = "3 * 4 + 5"
+>>> a = compile(str,'','eval')
+>>> eval(a)
+17
+"""
 complex() # 将一个数变为复数
 '''
 >>> complex(3,5)
@@ -162,4 +194,14 @@ set()  # 把一个列表变为集合
 '''
 >>> set([12,5,1,7,9])
 {1, 5, 7, 9, 12}
+
+
 '''
+slice()  # 实现切片对象，主要用在切片操作函数里的参数传递
+slice('start', 'stop', 'step')  # 起始位置、结束位置、间距
+"""
+a = range(20)
+pattern = slice(3, 8, 2) # 3到8，间隔两个数
+for i in a[pattern]:  # 等于a[3:8:2]
+    print(i)
+"""

@@ -56,3 +56,4 @@ def stu_register(name,age,course,country='CN'):
 stu_register("绮珊",course='Python',age=22,country='JP')  # 后三个均为为关键参数置于name位置参数之后
 # stu_register("杉树",course='Python',22,country='JP')    # 22为位置参数不能放在关键参数course之后
 # stu_register("曼玉",22,age=25,country='JP')    # age获得多个赋值
+

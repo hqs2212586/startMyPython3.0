@@ -1,6 +1,6 @@
 # python2.7测试用
 # -*- coding:utf-8 -*-
-
+"""
 s = "武汉武昌"
 print s
 
@@ -12,6 +12,7 @@ s3 = s2.encode("gbk")
 s4 = s2.encode("utf-8")
 print s3
 print s4
+"""
 
 '''
     py3 文件默认编码是utf-8

@@ -6,16 +6,15 @@ def range2(n):
         print('count', count)
         count += 1
         sign = yield count
-        # yield count  # 执行结束就会抛出StopIteration的报错
+        if sign == 'stop':
+            break
         print("---sign", sign)
-    return 3333  # 函数中有yield时就无法执行到return了
+    return 3333
+
 
 new_range = range2(3)  # 0，1，2
-
 n1 = next(new_range)
-
 print(new_range)
-
 new_range.send("stop")
 # send方法
 # 1.唤醒并继续执行

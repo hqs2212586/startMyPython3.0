@@ -3,9 +3,10 @@ def range2(n):
 
     count = 0
     while count < n:
-        print('count',count)
+        print('count', count)
         count += 1
         yield count  # 类似return,
+
 
 print(range2(10))  # <generator object range2 at 0x101447200>
 new_range = range2(10)

@@ -32,13 +32,13 @@ vi /Users/huangqiushi/PycharmProjects/checkServer/test_os.py
 import os
 print(os.path.split(os.getcwd()))
 
-python test.py
+python 练习.py
 输出：('/Users/huangqiushi/PycharmProjects', 'checkServer')
 """
 os.path.splitext()  # 分离扩展名
 """
 import os
-print(os.path.splitext("Users/huangqiushi/PycharmProjects/checkServer/test.py"))
+print(os.path.splitext("Users/huangqiushi/PycharmProjects/checkServer/练习.py"))
 
 输出：('Users/huangqiushi/PycharmProjects/checkServer/test', '.py')
 """
@@ -98,9 +98,9 @@ os.rename()  # 对一个文件改名
 
 os.makedirs()  # 创建多级目录
 """
->>> os.makedirs('home/hqs/test/test.py')
+>>> os.makedirs('home/hqs/test/练习.py')
 >>> os.listdir('home/hqs/test/')
-['test.py']
+['练习.py']
 """
 os.mkdir()    # 创建单个目录（不会递归，父目录不存在将报错）
 
@@ -125,8 +125,8 @@ os.path.getsize("filename")   # 获取文件大小
 """
 os.path.join('dir','filename')   # 结合目录名和文件名
 """
->>> os.path.join('root','test','test.py')
-'root/test/test.py'
+>>> os.path.join('root','test','练习.py')
+'root/test/练习.py'
 """
 
 os.chdir('dirname')  # 改变工作目录到dirname
