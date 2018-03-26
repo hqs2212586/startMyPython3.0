@@ -15,6 +15,7 @@ def range2(n):
 new_range = range2(3)  # 0，1，2
 n1 = next(new_range)
 print(new_range)
+# n2 = next(new_range)
 new_range.send("stop")
 # send方法
 # 1.唤醒并继续执行

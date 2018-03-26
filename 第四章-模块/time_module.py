@@ -20,7 +20,7 @@ a = time.localtime()  # 赋值给a（创建时间对象），可以进行各种�
 
 time.gmtime()   # 打印格林威治时间（比北京时间晚8个小时）
 # time.struct_time(tm_year=2018, tm_mon=2, tm_mday=26, tm_hour=2, tm_min=47, \
-#                  tm_min=47,tm_sec=49, tm_wday=0, tm_yday=57, tm_isdst=0)
+#                  ,tm_sec=49, tm_wday=0, tm_yday=57, tm_isdst=0)
 
 
 time.mktime()   # 把一个时间对象转化为时间戳
@@ -37,7 +37,7 @@ time.asctime()  # 把一个表示时间的元祖或struct time转换表示形式
 'Mon Feb 26 10:59:10 2018'
 """
 
-time.ctime()  # 把一个时间戳转化为time_asctime（）形式，默认以time.time()为参数
+time.ctime()  # 把一个时间戳转化为time_asctime()形式，默认以time.time()为参数
 """
 >>> time.ctime()   # 相当于time.asctime(time.localtime(secs))
 'Mon Feb 26 11:06:29 2018'
@@ -63,7 +63,7 @@ time.strftime(format,a) # 把一个代表时间的元祖或struct time转化为�
 '2018-02-26 11:24:56 1'
 """
 
-time.strptime('string',format)  # 把一个格式化时间字符串转化为struct_time,stftime的逆操作
+time.strptime('string', format)  # 把一个格式化时间字符串转化为struct_time,stftime的逆操作
 """
 >>> s = time.strftime('%Y %m-%d %H:%M:%S')
 >>> s

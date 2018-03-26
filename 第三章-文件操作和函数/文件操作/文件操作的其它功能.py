@@ -1,4 +1,4 @@
-f = open("兼职.txt",mode="r+",encoding="gbk")
+f = open("兼职.txt", mode="r+", encoding="gbk")
 
 f.fileno() # 返回文件句柄在内核中的索引值，做IO多路复用可以用到
 

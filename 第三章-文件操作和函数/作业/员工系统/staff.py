@@ -26,7 +26,7 @@ DB_FILE = "staff.db"
 COLUMNS = ['id', 'name', 'age', 'phone', 'dept', 'enrolled_data']  # 根据文件结构定义数据
 
 
-def print_log(msg,log_type="info"):
+def print_log(msg, log_type="info"):
     """
     :param msg: 字符串
     :param log_type:  'info' 或者 'error'
@@ -48,9 +48,9 @@ def load_db(db_file):
     for i in COLUMNS:
         data[i] = []
     # data = {'id': [], 'name': [], 'age': [], 'phone': [], 'dept': [], 'enrolled_data': []}
-    f = open(db_file,mode="r")    # 读取文件staff.db
+    f = open(db_file, mode="r")    # 读取文件staff.db
     for line in f:
-        staff_id,name,age,phone,dept,enrolled_date = line.split(",")  # 按","分隔
+        staff_id, name,age,phone,dept,enrolled_date = line.split(",")  # 按","分隔
         data['id'].append(staff_id)
         data['name'].append(name)
         data['age'].append(age)
@@ -288,7 +288,7 @@ def syntax_parser(cmd):    # e.g cmd = 'del from staff where  id=3'
     # cmd.split() = ['del','from','staff','where','id=3']
     if cmd.split()[0] in ('find','add','del','update'):
         if 'where' in cmd:    # 如果命令中有where返回true
-            query_clause,where_clause = cmd.split("where")  # query_clause='del from staff '; where_clause='  id=3'
+            query_clause, where_clause = cmd.split("where")  # query_clause='del from staff '; where_clause='  id=3'
             matched_records = syntax_where(where_clause)
         else:
             matched_records = []    # 命令中没有where

@@ -5,10 +5,10 @@ random.randint(1, 100)  # 1-100之间取一个随机数
 random.randrange(1, 100)  # 1-100之间取一个随机数
 """
 randint&randrange的区别：
-    randint不包含100，randrange包含100
+    randint包含100，randrange不包含100
 """
 
-学习.模块.random()   # 返回一个随机浮点数
+random.random()   # 返回一个随机浮点数
 random.choice('huangisngiisha12131a@!!!')  # 返回一个给定数据集合中的随机字符
 random.sample('adwas1231as!@#!as', 4)  # 从多个字符中选取特定数量的字符
 """

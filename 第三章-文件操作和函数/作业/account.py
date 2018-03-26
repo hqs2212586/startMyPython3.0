@@ -37,8 +37,12 @@ def change_info(account_dic,username):
     person_data = account_dic[username]
     print("person data: ",person_data)
     column_names = ['Username','Password',]
+    for index,k in enumerate(person_data):
+        if index > 1:...
+
 
 def save_file():...
+
 
 account_file = 'account.txt'
 f = open(account_file,"r+")
