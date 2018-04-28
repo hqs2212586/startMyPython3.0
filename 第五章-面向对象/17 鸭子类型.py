@@ -30,16 +30,21 @@
 #
 # text.read()
 # text.write()
-
+"""
+disk read
+disk write
+text read
+text write
+"""
 
 # 序列类型：列表list、元组tuple、字符串str
 l = list([1, 2, 3])
 t = tuple(('a', 'b'))
 s = str('hello')
 
-print(l.__len__())
-print(t.__len__())
-print(s.__len__())
+print(l.__len__())  # 3
+print(t.__len__())  # 2
+print(s.__len__())  # 5
 
 
 # python崇尚一种鸭子类型，类与类之间不用共同继承一个父类，只需要将它们做得像一种事物即可。

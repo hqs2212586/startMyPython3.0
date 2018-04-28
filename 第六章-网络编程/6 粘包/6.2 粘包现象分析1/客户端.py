@@ -6,7 +6,7 @@ import socket
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-client.connect(("127.0.0.1", 9001))
+client.connect(("127.0.0.1", 9002))
 
 # 使用了优化方法（Nagle算法），将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
 client.send('hello'.encode('utf-8'))

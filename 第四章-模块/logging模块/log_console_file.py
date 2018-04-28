@@ -1,17 +1,17 @@
-
 import logging
 
 
 class IgnoreBackupLogFilter(logging.Filter):
     """忽略带db backup 的日志"""
-    def filter(self, record): #固定写法
-        return   "db backup" not in record.getMessage()  # 字段不在日志消息内
+
+    def filter(self, record):  # 固定写法
+        return "db backup" not in record.getMessage()  # 字段不在日志消息内
 
 
 # 生成logger对象
 logger = logging.getLogger("web")
 logger.setLevel(logging.DEBUG)  # 不设置日志级别，默认日志级别是warning
-## 把filter对象添加到logger中
+# 把filter对象添加到logger中
 logger.addFilter(IgnoreBackupLogFilter())
 
 # 生成handler对象

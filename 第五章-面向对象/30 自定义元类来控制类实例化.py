@@ -7,6 +7,7 @@
 #     pass
 #
 # obj=Foo()
+# # obj()
 # # 没有__call__方法前，obj() 报错：TypeError: 'Foo' object is not callable（不可调用）
 # obj(1, 2, 3, a=1, b=2, c=3)
 """
@@ -38,7 +39,7 @@ class Mymeta(type):   # 自定义元类，大多数属性依然是继承的type
         print(args)   # args = ('egon',)
         print(kwargs)   # kwargs = {'age': 18}
 
-        # 第一件事：先造一个空对象obj
+        # 第一件事：实例化先造一个空对象obj
         obj = object.__new__(self)
         # 第二件事：初始化obj
         self.__init__(obj, *args, **kwargs)
@@ -67,7 +68,7 @@ obj = Chinese('egon', age=18)   # 实例化的行为
 {'age': 18}
 """
 
-print(obj.__dict__)
+# print(obj.__dict__)
 """
 {'name': 'egon', 'age': 18}
 """

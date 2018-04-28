@@ -12,5 +12,7 @@ print(conf.default_section)
 print(list(conf["bitbucket.org"].keys()))
 # 输出：['user', 'serveraliveinterval', 'compression', 'compressionlevel', 'forwardx11']
 
+
+print(conf.has_section('topsercret.server.com'))
 for k in conf["bitbucket.org"]:
     print(k)  # 每个节点都会默认有default值

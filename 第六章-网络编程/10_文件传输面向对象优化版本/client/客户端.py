@@ -1,63 +1,75 @@
-# -*- coding:utf-8 -*-
-__author__ = 'Qiushi Huang'
-
-import time
 import socket
 import struct
 import json
-
-download_dir = '/Users/hqs/PycharmProjects/startMyPython3.0/第六章-网络编程/9_文件传输函数优化版本/client/download'
-
-
-def get(client, cmds):
-    """2、以写的方式打开新文件，接收服务端发来的文件内容写入新文件中"""
-    # 第一步：先收报头长度
-    header = client.recv(4)
-    header_size = struct.unpack('i', header)[0]
-
-    # 第二步：收取报头
-    header_bytes = client.recv(header_size)
-
-    # 第三步：从报头中解析出对真实数据的描述信息（数据长度）
-    header_json = header_bytes.decode('utf-8')
-    header_dic = json.loads(header_json)
-    print(header_dic)
-    total_size = header_dic['file_size']
-    filename = header_dic['filename']
-
-    # 第四步：接收真实的数据
-    with open('%s/%s' % (download_dir, filename), 'wb') as f:  # 在同一台机器上，相同的路径会导致文件清空,需要指定目录
-        recv_size = 0
-        # recv_data = b''   拼接字符串不需要了
-        while recv_size < total_size:
-            line = client.recv(1024)  # 最大不能超过操作系统缓存大小，一次收不完，多次收
-            f.write(line)  # 一边收一边写
-            recv_size += len(line)  # 最后一次收的时候将不是1024,未来如果要查看进度的时候有问题
-            print('总大小: %s 已下载：%s' % (total_size, recv_size))
+import os
 
 
-def put(client, cmds):...
+
+class MYTCPClient:
+    address_family = socket.AF_INET
+    socket_type = socket.SOCK_STREAM
+    allow_reuse_address = False
+    max_packet_size = 8192
+    coding='utf-8'
+    request_queue_size = 5
+
+    def __init__(self, server_address, connect=True):
+        self.server_address=server_address
+        self.socket = socket.socket(self.address_family,
+                                    self.socket_type)
+        if connect:
+            try:
+                self.client_connect()
+            except:
+                self.client_close()
+                raise
+
+    def client_connect(self):
+        self.socket.connect(self.server_address)
+
+    def client_close(self):
+        self.socket.close()
+
+    def run(self):
+        while True:
+            inp=input(">>: ").strip()
+            if not inp:continue
+            l=inp.split()
+            cmd=l[0]
+            if hasattr(self,cmd):
+                func=getattr(self,cmd)
+                func(l)
 
 
-def run():
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    def put(self,args):
+        cmd=args[0]
+        filename=args[1]
+        if not os.path.isfile(filename):
+            print('file:%s is not exists' %filename)
+            return
+        else:
+            filesize=os.path.getsize(filename)
 
-    client.connect(("127.0.0.1", 9001))
+        head_dic={'cmd':cmd,'filename':os.path.basename(filename),'filesize':filesize}
+        print(head_dic)
+        head_json=json.dumps(head_dic)
+        head_json_bytes=bytes(head_json,encoding=self.coding)
 
-    while True:
-        """1、发命令"""
-        inp = input('>>: ').strip()   # get a.txt软件自定义命名标准
-        if not inp:continue
-        client.send(inp.encode('utf-8'))
-
-        cmds = inp.split()  # ['get', 'a.txt']
-        if cmds[0] == 'get':
-            get(client, cmds)
-        elif cmds[0] == 'put':
-            put(client, cmds)
-
-    client.close()
+        head_struct=struct.pack('i',len(head_json_bytes))
+        self.socket.send(head_struct)
+        self.socket.send(head_json_bytes)
+        send_size=0
+        with open(filename,'rb') as f:
+            for line in f:
+                self.socket.send(line)
+                send_size+=len(line)
+                print(send_size)
+            else:
+                print('upload successful')
 
 
-if __name__ == '__main__':
-    run()
+
+
+client=MYTCPClient(('127.0.0.1',8080))
+
+client.run()

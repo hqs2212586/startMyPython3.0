@@ -22,6 +22,8 @@ logging.Logger.removeFilter()
 logging.Logger.addHandler()
 logging.Logger.removeHandler()
 
+# 设置日志级别
+
 
 # handler
 # handler对象负责发送相关信息到指定的目的地（控制台、文件、网络）

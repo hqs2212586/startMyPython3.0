@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 __author__ = 'Qiushi Huang'
 
-from socket import *
+import socket
 
-client = socket(AF_INET, SOCK_DGRAM)
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 while True:
     msg = input('>>: ').strip()

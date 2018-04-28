@@ -1,77 +1,103 @@
-# -*- coding:utf-8 -*-
-__author__ = 'Qiushi Huang'
-
-import time
 import socket
-import subprocess
 import struct
-import os
 import json
+import subprocess
+import os
 
-share_dir = "/Users/hqs/PycharmProjects/startMyPython3.0/第六章-网络编程/9_文件传输函数优化版本/server/share"
+class MYTCPServer:
+    address_family = socket.AF_INET
 
+    socket_type = socket.SOCK_STREAM
 
-def get(conn, cmds):
-    filename = cmds[1]
+    allow_reuse_address = False
 
-    """3、以读的方式打开文件，读取文件内容发送给客户端"""
-    # with open(filename, 'rb') as f:  直接读文件传输会有粘包问题
-    # 第一步：制作固定长度的报头
-    header_dic = {
-        'filename': filename,  # ''
-        'md5': 'xxdxxx',
-        'file_size': os.path.getsize(r'%s/%s' % (share_dir, filename))  # 文件大小
-    }
-    header_json = json.dumps(header_dic)
-    header_bytes = header_json.encode('utf-8')
+    max_packet_size = 8192
 
-    # 第二步：发送报头的长度
-    conn.send(struct.pack('i', len(header_bytes)))
+    coding='utf-8'
 
-    # 第三步：再发报头
-    conn.send(header_bytes)
+    request_queue_size = 5
 
-    # 第四步：发送真实数据
-    with open('%s/%s' % (share_dir, filename), 'rb') as f:
-        # conn.send(f.read())   # 一下全读取，文件有几个T时会有问题
-        for line in f:
-            conn.send(line)  # 一行行发都会粘在一起，且节省内存
+    server_dir='file_upload'
 
-
-def put(conn, cmds):...
-
-
-
-def run():
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    server.bind(("127.0.0.1", 9001))  # bind()内为元组，0-65535：0-1024供操作系统使用
-    server.listen(5)
-
-    print('starting...')
-    while True:
-        conn, client_addr = server.accept()
-        print(client_addr)
-
-        while True:  # 通讯循环
+    def __init__(self, server_address, bind_and_activate=True):
+        """Constructor.  May be extended, do not override."""
+        self.server_address=server_address
+        self.socket = socket.socket(self.address_family,
+                                    self.socket_type)
+        if bind_and_activate:
             try:
-                """1、收到客户端的命令"""
-                res = conn.recv(8096)  # b'get a.txt'
-                if not res:break
-                """2、解析命令，提取相应命令参数"""
-                cmds = res.decode('utf-8').split()  # ['get', 'a.txt']
-                if cmds[0] == 'get':
-                    get(conn, cmds)
-                elif cmds[0] == 'put':
-                    put(conn, cmds)
+                self.server_bind()
+                self.server_activate()
+            except:
+                self.server_close()
+                raise
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+        """
+        if self.allow_reuse_address:
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.socket.bind(self.server_address)
+        self.server_address = self.socket.getsockname()
+
+    def server_activate(self):
+        """Called by constructor to activate the server.
+        """
+        self.socket.listen(self.request_queue_size)
+
+    def server_close(self):
+        """Called to clean-up the server.
+        """
+        self.socket.close()
+
+    def get_request(self):
+        """Get the request and client address from the socket.
+        """
+        return self.socket.accept()
+
+    def close_request(self, request):
+        """Called to clean up an individual request."""
+        request.close()
+
+    def run(self):
+        while True:
+            self.conn,self.client_addr=self.get_request()
+            print('from client ',self.client_addr)
+            while True:
+                try:
+                    head_struct = self.conn.recv(4)
+                    if not head_struct:break
+
+                    head_len = struct.unpack('i', head_struct)[0]
+                    head_json = self.conn.recv(head_len).decode(self.coding)
+                    head_dic = json.loads(head_json)
+
+                    print(head_dic)
+                    #head_dic={'cmd':'put','filename':'a.txt','filesize':123123}
+                    cmd=head_dic['cmd']
+                    if hasattr(self,cmd):
+                        func=getattr(self,cmd)
+                        func(head_dic)
+                except Exception:
+                    break
+
+    def put(self,args):
+        file_path=os.path.normpath(os.path.join(
+            self.server_dir,
+            args['filename']
+        ))
+
+        filesize=args['filesize']
+        recv_size=0
+        print('----->',file_path)
+        with open(file_path,'wb') as f:
+            while recv_size < filesize:
+                recv_data=self.conn.recv(self.max_packet_size)
+                f.write(recv_data)
+                recv_size+=len(recv_data)
+                print('recvsize:%s filesize:%s' %(recv_size,filesize))
 
 
-            except ConnectionResetError:
-                break
-        conn.close()
+tcpserver1=MYTCPServer(('127.0.0.1',8080))
 
-    server.close()
-
-
-if __name__ == '__main__':
-    run()
+tcpserver1.run()

@@ -5,27 +5,26 @@
 # 参数三：局部作用域(字典形式)，如果不指定默认就使用locals()
 
 # 格式：exec(object, globals, locals)
-# g = {
-#     'x':1,
-#     'y':2
-# }
-#
-# l = {}
-#
-# exec("""
-# global x,m
-# x=10
-# m=100
-#
-# z=3
-# """, g, l)
-#
-# print(g)
-#
-# print(l)
-"""
-{'z': 3}
-"""
+# 可以把exec命令的执行当成是一个函数的执行，会将执行期间产生的名字存放于局部名称空间中
+g = {
+    'x':1,
+    'y':2
+}
+
+l = {}
+
+exec("""
+global x,z
+x=100
+z=200
+
+m=300
+""", g, l)
+
+print(g)  # {'x': 100, 'y': 2,'z':200,......}
+
+print(l)  # {'m': 300}
+
 
 # python一切皆对象，对象可以怎么用？
 # 1、都可以被引用，x=obj
@@ -42,58 +41,58 @@
 # type是python的一个内建元类，用来直接控制生成类，python中任何class定义的类其实都是type类实例化的对象
 
 # 产生类的类称之为元类，默认所有用class定义的类，他们的元类是type
-class Bar:
-    pass
-print(type(Bar))
+# class Bar:
+#     pass
+# print(type(Bar))
 """
 <class 'type'>
 """
 
 # 定义类的两种方式：
 # 方式一：class
-# class Chinese:  # 这个类其实是元类实例化的一个对象
-#     country = 'China'
-#
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#
-#     def talk(self):
-#         print('%s is talking' % self.name)
+class Chinese:  # 这个类其实是元类实例化的一个对象
+    country = 'China'
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def talk(self):
+        print('%s is talking' % self.name)
 
 
 
 
 # 方式二：type
 # 定义类的三要素：类名、类的基类们、类的名称空间
-class_name = ' Chinese'
-class_bases = (object, )
-class_body = """
-country = 'China'
-
-def __init__(self,name,age):
-    self.name = name
-    self.age = age
-    
-def talk(self):
-    print('%s is talking' % self.name)
-"""
-
-class_dic = {}
-exec(class_body, globals(), class_dic)
-print(class_dic)
-"""输出：
-<class 'type'>
-{'country': 'China', '__init__': <function __init__ at 0x101d62e18>, 'talk': <function talk at 0x101db3620>}
-"""
-Chinese = type(class_name, class_bases, class_dic)  # 元类实例化得到一个元类的对象，等同于class声明的类
-print(Chinese)
-"""
-<class '__main__. Chinese'>
-"""
-obj = Chinese('egon', 18)
-print(obj,obj.name, obj.age)
-"""
-<__main__. Chinese object at 0x10401af98> egon 18
-"""
+# class_name = ' Chinese'
+# class_bases = (object, )
+# class_body = """
+# country = 'China'
+#
+# def __init__(self,name,age):
+#     self.name =
+#     self.age = age
+#
+# def talk(self):
+#     print('%s is talking' % self.name)
+# """
+#
+# class_dic = {}
+# exec(class_body, globals(), class_dic)
+# print(class_dic)
+# """输出：
+# <class 'type'>
+# {'country': 'China', '__init__': <function __init__ at 0x101d62e18>, 'talk': <function talk at 0x101db3620>}
+# """
+# Chinese = type(class_name, class_bases, class_dic)  # 元类实例化得到一个元类的对象，等同于class声明的类
+# print(Chinese)
+# """
+# <class '__main__. Chinese'>
+# """
+# obj = Chinese('egon', 18)
+# print(obj,obj.name, obj.age)
+# """
+# <__main__. Chinese object at 0x10401af98> egon 18
+# """
 

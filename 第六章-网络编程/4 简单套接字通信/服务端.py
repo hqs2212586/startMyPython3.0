@@ -10,7 +10,7 @@ phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 基于网络通讯�
 """
 
 # 2、绑定手机卡
-phone.bind(('127.0.0.1', 8080))  # 本地回环地址,  端口0-65535（0-1024归系统使用）
+phone.bind(('127.0.0.1', 9001))  # 本地回环地址,  端口0-65535（0-1024归系统使用）
 
 # 3、开机
 phone.listen(5)  # 最大挂起的链接数
@@ -28,9 +28,11 @@ starting...
 conn, client_addr = phone.accept()
 print(conn)
 print(client_addr)
+print('got a new connection from %s' % (client_addr, ))
 """
 <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8080), raddr=('127.0.0.1', 55925)>
-('127.0.0.1', 55925)
+('127.0.0.1', 65197)
+got a new connection from ('127.0.0.1', 65197)
 """
 
 # 5、收发消息

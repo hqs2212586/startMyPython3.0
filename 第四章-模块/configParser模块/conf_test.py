@@ -26,5 +26,7 @@ conf.read('conf_test.ini')
 # conf.remove_option('group1', "k2")
 # conf.write(open("conf_test_new.ini", "w"))
 # 删除某一整个章节
-conf.remove_section('group1')
-conf.write(open("conf_test2.ini", "w"))
+# conf.remove_section('group1')
+# conf.write(open("conf_test2.ini", "w"))
+
+print(conf.items('group1'))

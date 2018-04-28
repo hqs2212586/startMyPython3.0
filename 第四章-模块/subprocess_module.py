@@ -7,8 +7,7 @@ import subprocess
 # subprocess.run(['df', '-h'])  # df -h 执行立刻返回结果
 """
 >>> a = subprocess.run(['df', '-h'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
->>> a.stdout
-输出并拿到结果
+>>> a.stdout   # 输出并拿到结果
 >>> a = subprocess.run(['df', '-sdfh'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 >>> a.stderr
 b'df: illegal option -- s\n

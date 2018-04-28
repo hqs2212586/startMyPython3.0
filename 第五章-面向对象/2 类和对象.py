@@ -23,4 +23,11 @@ class LuffyStudent:
 stu1 = LuffyStudent()  # 不是执行类体，而是实例化
 stu2 = LuffyStudent()
 stu3 = LuffyStudent()
-print(stu1)  # <__main__.LuffyStudent object at 0x10401ae80>
+print(stu1)
+print(stu2)
+print(stu3)
+"""
+<__main__.LuffyStudent object at 0x10401ae80>
+<__main__.LuffyStudent object at 0x10401af28>
+<__main__.LuffyStudent object at 0x10401af60>
+"""

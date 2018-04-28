@@ -54,37 +54,45 @@ class Date:
     def tell_info(self):
         print('%s-%s-%s' % (self.year, self.mon, self.day))
 
-# teacher1 = Teacher('alex', 18, 'male', 10, 3000)
-#
-# python = Course('python', 3000, '3mons')
-# linux = Course('linux', 4000, '4mons')
-# student1 = Student('张三', 28, 'female', '08:30:00')
-#
-# teacher1.course = python  # 老师对象增加一个课程属性，赋值是课程对象
+teacher1 = Teacher('alex', 18, 'male', 10, 3000)
+
+python = Course('python', 3000, '3mons')
+linux = Course('linux', 4000, '4mons')
+student1 = Student('张三', 28, 'female', '08:30:00')
+teacher1.course = python  # 老师对象增加一个课程属性，赋值是课程对象
 
 # print(python)
 # print(teacher1.course)
-# print(student1.course)
 # print(teacher1.course.course_name)  # 输出：python
+"""
+<__main__.Course object at 0x104037198>
+<__main__.Course object at 0x104037198>
+python
+"""
 
-# teacher1.course.tell_info()
-# 课程名<python> 课程价钱<3000> 课程周期<3mons>
+teacher1.course.tell_info()
+"""
+课程名<python> 课程价钱<3000> 课程周期<3mons>
+"""
+student1.course1 = python  # 对象增加一个属性，指向了一个课程对象
+student1.course2 = linux
 
-# student1.course1 = python  # 对象增加一个属性，指向了一个课程对象
-# student1.course2 = linux
+student1.course1.tell_info()
+student1.course2.tell_info()
+
+student1.courses = []
+student1.courses.append(python)
+student1.courses.append(linux)
+
+# student1 = Student('张三', 28, 'female', '08:30:00')
+# d = Date(1988, 4, 20)
+# python = Course('Python', 3000, '3mons')
 #
-# student1.course1.tell_info()
-# student1.course2.tell_info()
-# student1.courses = []
-# student1.courses.append(python)
-# student1.courses.append(linux)
-
-student1 = Student('张三', 28, 'female', '08:30:00')
-d = Date(1988, 4, 20)
-python = Course('Python', 3000, '3mons')
-
-student1.birth = d
-student1.birth.tell_info()   # 1988-4-20
-
-student1.course = python
-student1.course.tell_info()   # 课程名<Python> 课程价钱<3000> 课程周期<3mons>
+# student1.birth = d
+# student1.birth.tell_info()   # 1988-4-20
+# student1.course = python
+# student1.course.tell_info()   # 课程名<Python> 课程价钱<3000> 课程周期<3mons>
+"""
+1988-4-20
+课程名<Python> 课程价钱<3000> 课程周期<3mons>
+"""

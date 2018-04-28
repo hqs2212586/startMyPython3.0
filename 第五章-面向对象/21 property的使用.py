@@ -20,6 +20,14 @@ EX：70KG / (1.75*1.75) = 22.86
 # p.bmi = p.weight / (p.height ** 2)
 #
 # print(p.bmi)
+"""
+17.63085399449036
+egon
+dragon
+名字必须是字符串类型
+dragon
+不允许删除
+"""
 
 # 二、添加函数改写
 # class People:
@@ -68,7 +76,7 @@ property的另一种用法
 #         return self.__name
 #
 # p = People('egon')
-# print(p.get_name())
+# print(p.get_name())  # 输出：egon
 
 
 
@@ -107,11 +115,11 @@ class People:
         print('不允许删除')
 
 p = People('egon')
-print(p.name)
+print(p.name)    # 输出：egon
 p.name = 'dragon'
-print(p.name)   # name修改成功
+print(p.name)   # 输出：dragon  # name修改成功
 
-p.name = 123   # 提示报错：名字必须是字符串类型
-print(p.name)
+p.name = 123   # 输出：名字必须是字符串类型（报错）
+print(p.name)  # 输出：dragon
 
-del p.name  # 提示报错：不允许删除
+del p.name  # 输出：不允许删除（报错）

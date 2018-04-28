@@ -9,7 +9,7 @@ import json
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server.bind(("127.0.0.1", 9001))  # bind()内为元组，0-65535：0-1024供操作系统使用
+server.bind(("127.0.0.1", 9003))  # bind()内为元组，0-65535：0-1024供操作系统使用
 server.listen(5)
 
 print('starting...')

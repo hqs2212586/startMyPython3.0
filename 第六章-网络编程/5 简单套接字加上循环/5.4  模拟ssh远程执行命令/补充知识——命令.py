@@ -13,10 +13,10 @@ __author__ = 'Qiushi Huang'
 
 
 # 执行系统命令
-# import os
-# cmd = os.popen('df -h')
-# cmd = cmd.read()
-# print(cmd)
+import os
+cmd = os.popen('df -h')
+cmd = cmd.read()
+print(cmd)
 
 import subprocess
 obj = subprocess.Popen('dxxxs', shell=True,

@@ -37,3 +37,4 @@ m.update(b'alex')  # 传值'alex'，unicode格式不行，必须使用bytes格�
 m.hexdigest()  # 输出md5值，唯一性
 len(m.hexdigest())  # 输出32（字节），32*4=128位
 
+print(hashlib.md5('admin'.encode('utf-8')).hexdigest())

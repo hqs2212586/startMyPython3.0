@@ -32,30 +32,30 @@
 # print(r.life_value)
 
 # 指名道姓，实例化子类添加自己独有特征
-# class Hero:
-#     def __init__(self, nickname, life_value, aggresivity):
-#         self.nickname = nickname
-#         self.life_value = life_value
-#         self.aggresivity = aggresivity
-#
-#     def attack(self, enemy):
-#         enemy.life_value -= self.aggresivity
-#
-#
-# class Garen(Hero):
-#     camp = 'Demacia'
-#
-#     def __init__(self, nickname, life_value, aggresivity, weapon):  # 代码复用
-#         Hero.__init__(self, nickname, life_value, aggresivity)
-#
-#         self.weapon = weapon
-#
-#     def attack(self, enemy):
-#         Hero.attack(self, enemy)  # 指名道姓
-#         print('from Garen Class')
-#
-# g = Garen('草丛伦', 100, 30, '金箍棒')
-# print(g.__dict__)
+class Hero:
+    def __init__(self, nickname, life_value, aggresivity):
+        self.nickname = nickname
+        self.life_value = life_value
+        self.aggresivity = aggresivity
+
+    def attack(self, enemy):
+        enemy.life_value -= self.aggresivity
+
+
+class Garen(Hero):
+    camp = 'Demacia'
+
+    def __init__(self, nickname, life_value, aggresivity, weapon):  # 代码复用
+        Hero.__init__(self, nickname, life_value, aggresivity)
+
+        self.weapon = weapon
+
+    def attack(self, enemy):
+        Hero.attack(self, enemy)  # 指名道姓
+        print('from Garen Class')
+
+g = Garen('草丛伦', 100, 30, '金箍棒')
+print(g.__dict__)
 
 
 # 方式二：super()  （依赖继承）
@@ -125,25 +125,25 @@ from Garen Class
 """
 
 # super与mro列表的关系
-class A:
-    def f1(self):
-        print('from A')
-        super().f1()   # super不管A的继承关系，按照C的MRO列表，继续往后找：B
-
-class B:
-    def f1(self):
-        print('from B')
-
-class C(A,B):
-    pass
-
-print(C.mro())
-"""
-[<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>]
-"""
-c = C()
-c.f1()
-"""
-from A
-from B
-"""
+# class A:
+#     def f1(self):
+#         print('from A')
+#         super().f1()   # super不管A的继承关系，按照C的MRO列表，继续往后找：B
+#
+# class B:
+#     def f1(self):
+#         print('from B')
+#
+# class C(A,B):
+#     pass
+#
+# print(C.mro())
+# """
+# [<class '__main__.C'>, <class '__main__.A'>, <class '__main__.B'>, <class 'object'>]
+# """
+# c = C()
+# c.f1()
+# """
+# from A
+# from B
+# """

@@ -9,10 +9,10 @@ fh = logging.FileHandler("access.log")
 logger.addHandler(ch)
 logger.addHandler(fh)
 # 生成formatter对象
-file_formater = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_formater = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# 把formatter对象绑定hander对象
-ch.setFormatter(console_formater)
-fh.setFormatter(file_formater)
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# 把formatter对象绑定handler对象
+ch.setFormatter(console_formatter)
+fh.setFormatter(file_formatter)
 
 logger.error("account [1234] too many login attempts")

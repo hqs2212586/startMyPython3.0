@@ -1,35 +1,35 @@
 # 单例模式:参数一样的实例，不用申请新的内存空间给新的对象
 # 实现方式一：
-# class MySQL:
-#     __instance = None   # 实例化后改为了__instance = obj1
-#     def __init__(self):
-#         self.host = '127.0.0.1'
-#         self.port = 3306
+class MySQL:
+    __instance = None   # 实例化后改为了__instance = obj1
+    def __init__(self):
+        self.host = '127.0.0.1'
+        self.port = 3306
+
+    @classmethod
+    def singleton(cls):
+        if not cls.__instance:
+            obj = cls()
+            cls.__instance = obj
+        return cls.__instance
+
+    def conn(self):
+        pass
+
+    def execute(self):
+        pass
+
+# obj1 = MySQL()
+# obj2 = MySQL()
 #
-#     @classmethod
-#     def singleton(cls):
-#         if not cls.__instance:
-#             obj = cls()
-#             cls.__instance = obj
-#         return cls.__instance
-#
-#     def conn(self):
-#         pass
-#
-#     def execute(self):
-#         pass
-#
-# # obj1 = MySQL()
-# # obj2 = MySQL()
-# #
-# # print(obj1)
-# # print(obj2)
-#
-# obj1 = MySQL.singleton()
-# obj2 = MySQL.singleton()
-# obj3 = MySQL.singleton()
-#
-# print(obj1 is obj3)
+# print(obj1)
+# print(obj2)
+
+obj1 = MySQL.singleton()
+obj2 = MySQL.singleton()
+obj3 = MySQL.singleton()
+
+print(obj1 is obj3)
 """
 True
 """

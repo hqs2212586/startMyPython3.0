@@ -5,28 +5,35 @@
 """
 
 
-class ParentClass1:
-    pass
-
-
-class ParentClass2:
-    pass
-
-
-class SubClass1(ParentClass1):  # 单继承，基类是ParentClass1，派生类是SubClass
-    pass
-
-
-class SubClass2(ParentClass1, ParentClass2):   # 多继承，用逗号分隔开多个继承的类
-    pass
+# class ParentClass1:
+#     pass
+#
+#
+# class ParentClass2:
+#     pass
+#
+#
+# class SubClass1(ParentClass1):  # 单继承，基类是ParentClass1，派生类是SubClass
+#     pass
+#
+#
+# class SubClass2(ParentClass1, ParentClass2):   # 多继承，用逗号分隔开多个继承的类
+#     pass
 
 
 """
 __base__只查看从左到右继承的第一个子类
 __bases__查看所有继承的父类
 """
-print(SubClass1.__bases__)
-print(SubClass2.__bases__)
+# print(ParentClass1.__base__, type(ParentClass1.__base__))
+# print(SubClass2.__base__, type(SubClass2.__base__))
+"""
+<class 'object'> <class 'type'>
+<class '__main__.ParentClass1'> <class 'type'>
+"""
+
+# print(SubClass1.__bases__)
+# print(SubClass2.__bases__)
 """数据结构为元组
 (<class '__main__.ParentClass1'>,)
 (<class '__main__.ParentClass1'>, <class '__main__.ParentClass2'>)
@@ -48,25 +55,25 @@ print(SubClass2.__bases__)
 """
 
 
-class Hero:
-    def __init__(self, nickname, life_value, aggresivity):
-        self.nickname = nickname
-        self.life_value = life_value
-        self.aggresivity = aggresivity
-
-    def attack(self, enemy):
-        enemy.life_value -= self.aggresivity
-
-
-class Garen(Hero):
-    pass
-
-
-class Riven(Hero):
-    pass
-
-g1 = Garen('刚哥', 29, 30)
-print(g1.__dict__)
+# class Hero:
+#     def __init__(self, nickname, life_value, aggresivity):
+#         self.nickname = nickname
+#         self.life_value = life_value
+#         self.aggresivity = aggresivity
+#
+#     def attack(self, enemy):
+#         enemy.life_value -= self.aggresivity
+#
+#
+# class Garen(Hero):
+#     pass
+#
+#
+# class Riven(Hero):
+#     pass
+#
+# g1 = Garen('刚哥', 29, 30)
+# print(g1.__dict__)
 """
 {'nickname': '刚哥', 'life_value': 29, 'aggresivity': 30}
 """
@@ -87,8 +94,8 @@ class Bar(Foo):
 
 b = Bar()
 print(b.__dict__)  # 未定义__init__没有自己的属性  字典内为空
-b.f1()
-b.f2()
+b.f1()   # 指向父类的函数
+b.f2()   # 指向子类重用的函数
 """
 {}
 from Foo.f1

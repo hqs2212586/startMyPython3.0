@@ -25,7 +25,7 @@ CRITICAL:root:server is down
 # logging.info("so should this")
 # logging.warning("And this,too")
 """
-log_test.log中仅仅写入了warning和info信息
+log_test.log中仅写入了warning和info信息
 """
 
 

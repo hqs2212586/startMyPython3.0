@@ -12,25 +12,25 @@
 # （2）逻辑错误：
 # ValueError  对象使用不合适的值引起
 # int('aaa')
-
+#
 # NameError   找不到名字变量引起
-
+#
 # IndexError  使用序列中不存在的索引时引发
 # l = [1,2,3]
 # l[1000] # list index out of range
-
+#
 # KeyError  在使用映射中不存在的键时引发
 # d = {}
 # d['name']
-
+#
 # AttributeError   特性引用或赋值失败引发
 # class Foo:
 #     pass
 # Foo.xxx
-
+#
 # ZeroDivisionError   在除法或模除操作的第二参数为0时引发
 # 1/0
-
+#
 # TypeError:   内建操作或函数应用于错误类型的对象时引发
 # for i in 3:
 #     pass
