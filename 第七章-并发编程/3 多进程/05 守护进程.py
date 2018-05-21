@@ -8,42 +8,42 @@ __author__ = 'Qiushi Huang'
     其二：守护进程内不能再开启子进程,否则抛出异常：AssertionError: daemonic processes are not allowed to have children
 """
 # 守护进程一定要在进程开启前设置
-# from multiprocessing import Process
-# import time
-#
-# def task(name):
-#     print("%s is running" % name)
-#     time.sleep(2)
-#
-#
-# if __name__ == '__main__':
-#     p = Process(target=task, args=('子进程', ))
-#     p.daemon=True    # 守护进程一定要在进程开启前设置
-#     p.start()
-#
-#     print("主进程")
+from multiprocessing import Process
+import time
+
+def task(name):
+    print("%s is running" % name)
+    time.sleep(2)
+
+
+if __name__ == '__main__':
+    p = Process(target=task, args=('子进程', ))
+    p.daemon=True    # 守护进程一定要在进程开启前设置
+    p.start()
+
+    print("主进程")
 """
 主进程    ————》子进程还没开始就已经结束了
 """
 
 # 验证守护进程内部能再开子进程——》守护进程再开子进程会造成问题：会造成一堆孤儿
-# from multiprocessing import Process
-# import time
-#
-# def task(name):
-#     print("%s is running" % name)
-#     time.sleep(2)
-#     p = Process(target=time.sleep, args=(3, ))
-#     p.start()
-#
-# if __name__ == '__main__':
-#     p = Process(target=task, args=('子进程', ))
-#     p.daemon=True    # 守护进程一定要在进程开启前设置
-#     p.start()
-#
-#     p.join()   # 让主进程等待子进程结束
-#
-#     print("主进程")
+from multiprocessing import Process
+import time
+
+def task(name):
+    print("%s is running" % name)
+    time.sleep(2)
+    p = Process(target=time.sleep, args=(3, ))
+    p.start()
+
+if __name__ == '__main__':
+    p = Process(target=task, args=('子进程', ))
+    p.daemon=True    # 守护进程一定要在进程开启前设置
+    p.start()
+
+    p.join()   # 让主进程等待子进程结束
+
+    print("主进程")
 """
 AssertionError: daemonic processes are not allowed to have children
 """

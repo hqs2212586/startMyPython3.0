@@ -9,19 +9,19 @@ __author__ = 'Qiushi Huang'
 2、进程之间的内存空间是共享的还是隔离的？下述代码的执行结果是什么？
     进程之间的内存空间是隔离的。执行输出："子进程内:  0"
 """
-# from multiprocessing import Process
-#
-# n=100 #在windows系统中应该把全局变量定义在if __name__ == '__main__'之上就可以了
-#
-# def work():
-#     global n
-#     n=0
-#     print('子进程内: ',n)
-#
-#
-# if __name__ == '__main__':
-#     p=Process(target=work)
-#     p.start()
+from multiprocessing import Process
+
+n=100 #在windows系统中应该把全局变量定义在if __name__ == '__main__'之上就可以了
+
+def work():
+    global n
+    n=0
+    print('子进程内: ',n)
+
+
+if __name__ == '__main__':
+    p=Process(target=work)
+    p.start()
 """输出：
 子进程内:  0
 """

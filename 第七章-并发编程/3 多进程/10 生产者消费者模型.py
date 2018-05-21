@@ -91,39 +91,39 @@ __author__ = 'Qiushi Huang'
 """
 
 # 为了解决队列取空锁死的问题，做如下修改：
-# from multiprocessing import Process, Queue
-# import time
-#
-# def producer(q):
-#     for i in range(10):
-#         res = '包子%s' % i
-#         time.sleep(0.5)   # 模拟生产时间
-#         print('生产者生产了%s' % res)
-#
-#         q.put(res)  # 放入队列中
-#
-#
-# def consumer(q):
-#     while True:    # 一直从队列取一旦取空了，会加一把锁，程序卡在这里
-#         res = q.get()   # 取队列中数据
-#         if res is None:break
-#         time.sleep(1)    # 模拟消费时间
-#         print('消费者消费了%s' % res)
-#
-# if __name__ == '__main__':
-#     # 容器
-#     q = Queue()
-#     # 生产者
-#     p1 = Process(target=producer, args=(q, ))
-#     # 消费者
-#     c1 = Process(target=consumer, args=(q, ))
-#
-#     p1.start()
-#     c1.start()
-#
-#     p1.join()   # 保证生产者都执行完，主进程才执行完
-#     q.put(None)  # 往队列里放入None,给消费者判断
-#     print("主进程")
+from multiprocessing import Process, Queue
+import time
+
+def producer(q):
+    for i in range(10):
+        res = '包子%s' % i
+        time.sleep(0.5)   # 模拟生产时间
+        print('生产者生产了%s' % res)
+
+        q.put(res)  # 放入队列中
+
+
+def consumer(q):
+    while True:    # 一直从队列取一旦取空了，会加一把锁，程序卡在这里
+        res = q.get()   # 取队列中数据
+        if res is None:break
+        time.sleep(1)    # 模拟消费时间
+        print('消费者消费了%s' % res)
+
+if __name__ == '__main__':
+    # 容器
+    q = Queue()
+    # 生产者
+    p1 = Process(target=producer, args=(q, ))
+    # 消费者
+    c1 = Process(target=consumer, args=(q, ))
+
+    p1.start()
+    c1.start()
+
+    p1.join()   # 保证生产者都执行完，主进程才执行完
+    q.put(None)  # 往队列里放入None,给消费者判断
+    print("主进程")
 """
 生产者生产了包子0
 生产者生产了包子1
