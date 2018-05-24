@@ -6,30 +6,30 @@ __author__ = 'Qiushi Huang'
 gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 
     Greenlet全部运行在主程序操作系统进程的内部，但它们被协作式地调度。
 """
-# import gevent
-# import time
-#
-# def eat(name):
-#     print("%s eat 1" % name)
-#     # time.sleep(1)  # 不切，不能识别其他程序的I/O操作
-#     gevent.sleep(3)  # gevent只能识别自己模拟的I/O操作
-#     print("%s eat 2" % name)
-#
-# def play(name):
-#     print("%s play 1" % name)
-#     gevent.sleep(4)
-#     print("%s paly 2" % name)
-#
-#
-# start_time = time.time()
-# g1 = gevent.spawn(eat, 'egon')
-# g2 = gevent.spawn(play, "alex")
-# # 异步提交，提交后不会等待完成结果
-#
-# g1.join()
-# g2.join()
-# stop_time = time.time()
-# print(stop_time-start_time)
+import gevent
+import time
+
+def eat(name):
+    print("%s eat 1" % name)
+    # time.sleep(1)  # 不切，不能识别其他程序的I/O操作
+    gevent.sleep(3)  # gevent只能识别自己模拟的I/O操作
+    print("%s eat 2" % name)
+
+def play(name):
+    print("%s play 1" % name)
+    gevent.sleep(4)
+    print("%s paly 2" % name)
+
+
+start_time = time.time()
+g1 = gevent.spawn(eat, 'egon')
+g2 = gevent.spawn(play, "alex")
+# 异步提交，提交后不会等待完成结果
+
+g1.join()
+g2.join()
+stop_time = time.time()
+print(stop_time-start_time)
 """
 egon eat 1
 alex play 1

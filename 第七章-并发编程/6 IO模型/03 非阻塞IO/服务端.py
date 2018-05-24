@@ -6,7 +6,7 @@ from socket import *
 server = socket(AF_INET, SOCK_STREAM)
 server.bind(('127.0.0.1', 8093))
 server.listen(5)
-server.setblocking(False)   # 默认是True:阻塞，改为False:非阻塞
+server.setblocking(False)   # 默认是True:阻塞，改为False:非阻塞，这行运行后，后面所有的IO操作变为非阻塞
 print("starting....")
 
 rlist = []
@@ -18,30 +18,30 @@ while True:  # 链接循环
         print(rlist)
     except BlockingIOError:   # 没有链接捕捉异常
         # print("干其他活")
-        # 收消息
+        """收消息"""
         del_rlist = []
         for conn in rlist:
             try:
-                data = conn.recv(1024)
+                data = conn.recv(1024)    # 收消息
                 if not data:
                     del_rlist.append(conn)
                     continue
                 # conn.send(data.upper())  # 传输的内容很多时，send也会有阻塞
                 wlist.append((conn, data.upper()))  # 存放套接字及套接字准备发送的内容
-            except BlockingIOError:
+            except BlockingIOError:   # 捕捉异常，跳过阻塞异常
                 continue
             except Exception:
                 conn.close()
-                del_rlist.append(conn)
+                del_rlist.append(conn)   # 要删除对象加入空列表del_rlist
 
-        # 发消息
+        """发消息"""
         del_wlist = []
         for item in wlist:
             try:
                 conn = item[0]
                 data = item[1]
                 conn.send(data)
-                del_wlist.append(conn)  # 正常，走到这一步
+                del_wlist.append(conn)  # 发送成功，加入删除的列表中
             except BlockingIOError:   # 没让发抛出异常
                 pass
 

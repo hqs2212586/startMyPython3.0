@@ -22,7 +22,7 @@ greenlet模块：比generator更加便捷的切换方式，多个任务间很方
 # g1 = greenlet(eat)
 # g2 = greenlet(play)
 #
-# g1.switch('egon')
+# g1.switch('egon')   #可以在第一次switch时传入参数，以后都不需要
 """
 egon eat 1
 hqs play 1
@@ -48,5 +48,10 @@ def play(name):
 
 g1 = greenlet(eat)
 g2 = greenlet(play)
-
 g1.switch('egon')
+"""
+egon eat 1   # 这一步卡了足足10秒
+hqs play 1
+egon eat 2
+hqs paly 2
+"""

@@ -6,30 +6,30 @@ __author__ = 'Qiushi Huang'
 1、同步调用：提交完任务后，就在原地等待任务执行完毕，拿到执行结果，再执行下一行。
            导致程序是串行执行
 """
-# from concurrent.futures import ThreadPoolExecutor
-# import time
-# import random
-#
-# def la(name):
-#     print("%s is laing" % name)
-#     time.sleep(random.randint(3,5))
-#     res = random.randint(7, 13)*'#'
-#     return {'name':name, 'res':res}
-#
-# def weigh(shit):
-#     name = shit['name']
-#     size = len(shit['res'])
-#     print('%s 拉了 《%s》kg' % (name, size))
-#
-# if __name__ == '__main__':
-#     pool = ThreadPoolExecutor(13)
-#
-#     shit1 = pool.submit(la, 'alex').result()
-#     weigh(shit1)
-#     shit2 = pool.submit(la, 'wupeiqi').result()
-#     weigh(shit2)
-#     shit3 = pool.submit(la, "yuanhao").result()
-#     weigh(shit3)
+from concurrent.futures import ThreadPoolExecutor
+import time
+import random
+
+def la(name):
+    print("%s is laing" % name)
+    time.sleep(random.randint(3,5))
+    res = random.randint(7, 13)*'#'
+    return {'name':name, 'res':res}
+
+def weigh(shit):
+    name = shit['name']
+    size = len(shit['res'])
+    print('%s 拉了 《%s》kg' % (name, size))
+
+if __name__ == '__main__':
+    pool = ThreadPoolExecutor(13)
+
+    shit1 = pool.submit(la, 'alex').result()
+    weigh(shit1)
+    shit2 = pool.submit(la, 'wupeiqi').result()
+    weigh(shit2)
+    shit3 = pool.submit(la, "yuanhao").result()
+    weigh(shit3)
 """
 alex is laing
 alex 拉了 《7》kg

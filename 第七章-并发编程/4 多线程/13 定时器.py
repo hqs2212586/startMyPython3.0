@@ -13,7 +13,7 @@ __author__ = 'Qiushi Huang'
 #
 # t = Timer(5, task, args=('egon',))   # 创建对象，Timer是Thread的子类，其实就是一个线程
 # t.start()
-# hello egon ---->在等五秒后打印
+# # hello egon ---->在等五秒后打印
 
 
 # 定时器在验证码的应用
@@ -28,7 +28,9 @@ __author__ = 'Qiushi Huang'
 #     return res
 #
 # print(make_code())
-
+"""
+6HS8  \  6S38  ————》结果随机产生
+"""
 
 # 将定时器改写为类
 from threading import Timer

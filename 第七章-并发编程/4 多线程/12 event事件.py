@@ -48,33 +48,33 @@ event.clear()：恢复event的状态值为False。  ————set()后再clear
 """
 
 # 改写：有的学生线程，需要在老师发出结束信号前就去做其他工作
-# from threading import Thread, Event
-# import time
-#
-# event = Event()
-#
-# def student(name):
-#     print("学生%s正在听课" % name)
-#     event.wait(2)
-#     print("学生%s课间活动" % name)
-#
-#
-# def teacher(name):
-#     print("老师%s 正在授课" % name)
-#     time.sleep(7)
-#     event.set()
-#
-#
-# if __name__ == '__main__':
-#     stu1 = Thread(target=student, args=('alex',))
-#     stu2 = Thread(target=student, args=('wxx',))
-#     stu3 = Thread(target=student, args=('yxx',))
-#     t1 = Thread(target=teacher, args=('egon',))
-#
-#     stu1.start()
-#     stu2.start()
-#     stu3.start()
-#     t1.start()
+from threading import Thread, Event
+import time
+
+event = Event()
+
+def student(name):
+    print("学生%s正在听课" % name)
+    event.wait(2)
+    print("学生%s课间活动" % name)
+
+
+def teacher(name):
+    print("老师%s 正在授课" % name)
+    time.sleep(7)
+    event.set()
+
+
+if __name__ == '__main__':
+    stu1 = Thread(target=student, args=('alex',))
+    stu2 = Thread(target=student, args=('wxx',))
+    stu3 = Thread(target=student, args=('yxx',))
+    t1 = Thread(target=teacher, args=('egon',))
+
+    stu1.start()
+    stu2.start()
+    stu3.start()
+    t1.start()
 """
 学生alex正在听课
 学生wxx正在听课
@@ -85,7 +85,7 @@ event.clear()：恢复event的状态值为False。  ————set()后再clear
 学生wxx课间活动
 """
 
-# 其他应用
+# 其他应用——检测多次不通过，设置超时
 from threading import Thread, Event, currentThread
 import time
 
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     for i in range(3):
         t = Thread(target=conn)
         t.start()
-    t = Thread(target=check)
+    t = Thread(target=check)   # 检测线程
     t.start()
 """
 Thread-1 try 0

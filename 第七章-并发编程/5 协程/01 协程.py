@@ -13,6 +13,7 @@ __author__ = 'Qiushi Huang'
 1 yiled可以保存状态，yield的状态保存与操作系统的保存线程状态很像，但是yield是代码级别控制的，更轻量级
 2 send可以把一个函数的结果传给另外一个函数，以此实现单线程内程序之间的切换
 """
+# 并发
 import time
 def producer():
     g = consumer()
@@ -23,7 +24,7 @@ def producer():
 
 def consumer():
     while True:
-        res = yield   # yield收到producer  i的值，处理完切回producer的for循环
+        res = yield   # yield收到producer的i的值，处理完切回producer的for循环
 
 start_time = time.time()
 producer()
@@ -50,7 +51,6 @@ stop_time = time.time()
 print(stop_time-start_time)
 """0.18116021156311035"""
 # 结论：这种形式的并发反而降低了效率
-
 
 """
 协程总结：是单线程下的并发，又称微线程，纤程。英文名Coroutine。

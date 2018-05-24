@@ -16,6 +16,12 @@ __author__ = 'Qiushi Huang'
 # print(q.get())   # 取数据
 # print(q.get())
 # print(q.get())
+"""
+first
+2
+third
+"""
+
 
 """
 queue的get()方法参数问题
@@ -43,16 +49,16 @@ queue的get()方法参数问题
 """
 后进先出——》堆栈
 """
-# import queue
-#
-# q = queue.LifoQueue(3)   # 堆栈
-# q.put("first")
-# q.put(2)
-# q.put("third")
-#
-# print(q.get())  # third
-# print(q.get())  # 2
-# print(q.get())  # first
+import queue
+
+q = queue.LifoQueue(3)   # 堆栈
+q.put("first")
+q.put(2)
+q.put("third")
+
+print(q.get())  # third
+print(q.get())  # 2
+print(q.get())  # first
 
 
 """

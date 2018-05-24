@@ -43,60 +43,60 @@ Value，Array（用于进程通信，资源共享）
 Manager（用于资源共享）
 """
 # 9、写一个程序，包含十个线程，子线程必须等待主线程sleep 10秒钟之后才执行，并打印当前时间；
-# from threading import Thread
-# import time
-#
-# def task(name):
-#     print(name, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-#
-# if __name__ == '__main__':
-#     time.sleep(10)
-#     for i in range(10):
-#         t = Thread(target=task, args=("线程 %s" % i,))
-#         t.start()
+from threading import Thread
+import time
+
+def task(name):
+    print(name, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
+if __name__ == '__main__':
+    time.sleep(10)
+    for i in range(10):
+        t = Thread(target=task, args=("线程 %s" % i,))
+        t.start()
 
 # 10、写一个程序，包含十个线程，同时只能有五个子线程并行执行；
-# from concurrent.futures import ThreadPoolExecutor
-# import os,time,random
-# def task(n):
-#     print("%s is running" % os.getpid())
-#     time.sleep(random.randint(1,3))
-#     return n**2
-#
-# if __name__ == '__main__':
-#     executor = ThreadPoolExecutor(5)
-#     futures=[]
-#     for i in range(10):
-#         future = executor.submit(task, i)
-#         futures.append(future)
-#     executor.shutdown(True)
-#     print('++>')
-#     for future in futures:
-#         print(future.result())
+from concurrent.futures import ThreadPoolExecutor
+import os,time,random
+def task(n):
+    print("%s is running" % os.getpid())
+    time.sleep(random.randint(1,3))
+    return n**2
+
+if __name__ == '__main__':
+    executor = ThreadPoolExecutor(5)
+    futures=[]
+    for i in range(10):
+        future = executor.submit(task, i)
+        futures.append(future)
+    executor.shutdown(True)
+    print('++>')
+    for future in futures:
+        print(future.result())
 
 # 11、写一个程序，要求用户输入用户名和密码，要求密码长度不少于6个字符，且必须以字母开头，如果密码合法，则将该密码使用md5算法加密后的十六进制概要值存入名为password.txt的文件，超过三次不合法则退出程序；
-# import hashlib
-# import json
-# import re
-#
-# def func():
-#     count = 0
-#     while count < 3:
-#         username = input("username>>>:").strip()
-#         password = input("password>>>:").strip()
-#         if len(password) < 6 or not re.search('\A([a-z]|[A-Z])', password):
-#             count += 1
-#             print("must match password rule")
-#         else:
-#             obj = {
-#                 'username':username,
-#                 'password':hashlib.md5(password.encode('utf-8')).hexdigest()
-#             }
-#             json.dump(obj, open('password.txt', 'a', encoding='utf-8'))
-#             break
-#
-# if __name__ == '__main__':
-#     func()
+import hashlib
+import json
+import re
+
+def func():
+    count = 0
+    while count < 3:
+        username = input("username>>>:").strip()
+        password = input("password>>>:").strip()
+        if len(password) < 6 or not re.search('\A([a-z]|[A-Z])', password):
+            count += 1
+            print("must match password rule")
+        else:
+            obj = {
+                'username':username,
+                'password':hashlib.md5(password.encode('utf-8')).hexdigest()
+            }
+            json.dump(obj, open('password.txt', 'a', encoding='utf-8'))
+            break
+
+if __name__ == '__main__':
+    func()
 
 
 # 12、写一个程序，使用socketserver模块，实现一个支持同时处理多个客户端请求的服务器，要求每次启动一个新线程处理客户端请求；

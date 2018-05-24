@@ -1,7 +1,44 @@
 # -*- coding:utf-8 -*-
 __author__ = 'Qiushi Huang'
 
+# from socket import *
+#
+# server = socket(AF_INET, SOCK_STREAM)
+# server.bind(('127.0.0.1', 8093))
+# server.listen(5)
+#
+# while True:  # 链接循环
+#     print("starting....")
+#     conn, addr = server.accept()   # 等对方来连————阻塞（操作系统会将cpu拿走）
+#     print(addr)
+#
+#     while True:  # 通讯循环
+#         try:
+#             data = conn.recv(1024)  # 等待收消息————阻塞
+#             if not data: break
+#             conn.send(data.upper())
+#         except ConnectionResetError:
+#             break
+#
+#     conn.close()
+# server.close()
+
+"""
+blocking IO的特点就是在IO执行的两个阶段（等待数据和拷贝数据两个阶段）都被block了
+"""
 from socket import *
+from threading import Thread
+
+def communicate(conn):
+    while True:  # 通讯循环
+        try:
+            data = conn.recv(1024)  # 等待收消息————阻塞
+            if not data: break
+            conn.send(data.upper())
+        except ConnectionResetError:
+            break
+
+    conn.close()
 
 server = socket(AF_INET, SOCK_STREAM)
 server.bind(('127.0.0.1', 8093))
@@ -12,20 +49,11 @@ while True:  # 链接循环
     conn, addr = server.accept()   # 等对方来连————阻塞（操作系统会将cpu拿走）
     print(addr)
 
-    while True:  # 通讯循环
-        try:
-            data = conn.recv(1024)  # 等待收消息————阻塞
-            if not data: break
-            conn.send(data.upper())
-        except ConnectionResetError:
-            break
+    t=Thread(target=communicate, args=(conn,))
+    t.start()
 
-    conn.close()
 server.close()
 
-"""
-blocking IO的特点就是在IO执行的两个阶段（等待数据和拷贝数据两个阶段）都被block了
-"""
 """
 一个简单的解决方案：
 

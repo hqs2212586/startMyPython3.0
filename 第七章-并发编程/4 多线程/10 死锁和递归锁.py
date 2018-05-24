@@ -6,43 +6,43 @@ __author__ = 'Qiushi Huang'
 死锁： 是指两个或两个以上的进程或线程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。
       此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程
 """
-# from threading import Thread, Lock
-# import time
-#
-# # 实例化两把锁
-# mutexA = Lock()
-# mutexB = Lock()
-#
-#
-# class MyThread(Thread):
-#     def run(self):
-#         self.f1()
-#         self.f2()
-#
-#     def f1(self):
-#         mutexA.acquire()
-#         print("%s 拿到A锁" % self.name)
-#
-#         mutexB.acquire()
-#         print("%s 拿到了B锁" % self.name)
-#
-#         mutexB.release()
-#         mutexA.release()
-#
-#     def f2(self):
-#         mutexB.acquire()
-#         print("%s 拿到B锁" % self.name)
-#         time.sleep(0.1)   # 线程1在此休息0.1秒
-#         mutexA.acquire()
-#         print("%s 拿到了A锁" % self.name)
-#
-#         mutexA.release()
-#         mutexB.release()
-#
-# if __name__ == '__main__':
-#     for i in range(10):
-#         t = MyThread()
-#         t.start()   # 信号提交，就几乎立马启动了
+from threading import Thread, Lock
+import time
+
+# 实例化两把锁
+mutexA = Lock()
+mutexB = Lock()
+
+
+class MyThread(Thread):
+    def run(self):
+        self.f1()
+        self.f2()
+
+    def f1(self):
+        mutexA.acquire()
+        print("%s 拿到A锁" % self.name)
+
+        mutexB.acquire()
+        print("%s 拿到了B锁" % self.name)
+
+        mutexB.release()
+        mutexA.release()
+
+    def f2(self):
+        mutexB.acquire()
+        print("%s 拿到B锁" % self.name)
+        time.sleep(0.1)   # 线程1在此休息0.1秒
+        mutexA.acquire()
+        print("%s 拿到了A锁" % self.name)
+
+        mutexA.release()
+        mutexB.release()
+
+if __name__ == '__main__':
+    for i in range(10):
+        t = MyThread()
+        t.start()   # 信号提交，就几乎立马启动了
 """程序输出下面内容后，卡住了
 Thread-1 拿到A锁
 Thread-1 拿到了B锁
@@ -55,12 +55,12 @@ Thread-2 拿到A锁   ————》线程1睡着时，线程2拿到A锁，要�
 """
 互斥锁只能acquire一次
 """
-# from threading import Thread, Lock
-#
-# mutexA = Lock()
-#
-# mutexA.acquire()
-# mutexA.release()
+from threading import Thread, Lock
+
+mutexA = Lock()
+
+mutexA.acquire()
+mutexA.release()
 
 
 """
