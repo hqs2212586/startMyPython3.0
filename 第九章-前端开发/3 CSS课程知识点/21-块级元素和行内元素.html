@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块级和行内元素</title>
+    <style type="text/css">
+        .box1{
+            display: inline;  /* 通过inline将块级元素转化为行内元素 */
+            width: 200px;
+            height: 40px;
+            border: 1px solid red;
+        }
+        .box2{
+            margin-top: 20px;
+            width: 200px;
+            height: 40px;
+            border: 1px solid green;
+        }
+        span{
+            background-color: yellow;
+            width: 100px;   /* 给行内元素设置高度宽度是不起作用的 */
+            height: 40px;
+            display: block;  /* block将行内元素转化为块级元素 */
+        }
+        img{   /* 行内块级元素，可以设置高度和宽度，也都在一行内展示 */
+            width: 300px;
+            height: 300px;
+            display: none;  /* 隐藏当前的标签 不占位置 */
+            visibility:hidden;  /* 隐藏当前的标签 占位置 */
+        }
+        .box1{
+            display: inline-block;  /* 通过inline-block将块级元素转化为行内块级元素 */
+            width: 200px;
+            height: 40px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">内容</div>
+    <div class="box1">内容</div>
+    <div class="box2">内容</div>
+
+    <span>alex</span>
+    <span>alex</span>
+
+    <!--form表单中input textarea select都是行内块级元素-->
+    <img src="./images/homesmall.png" alt="">
+    <img src="./images/homesmall2.png" alt="">
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css的选择器</title>
+    <!--内嵌样式-->
+    <style type="text/css">
+        body{
+            color:black;
+            font-size: 14px;
+        }
+        /* 类选择器 */
+        .title_color{
+            color:green;
+        }
+        .title_strong{
+            font-size: 18px;
+        }
+        .title_underline{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="title_color title_strong">段落1</p>
+        <p class="title_color title_underline">段落2</p>
+        <p class="title_strong title_underline">段落3</p>
+    </div>
+</body>
+</html>

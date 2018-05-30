@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动元素互相贴靠</title>
+    <style type="text/css">
+        span{
+            background-color: red;
+            float: left;   /* 左浮动实现贴边 */
+        }
+        .box1{
+            width: 100px;
+            height: 400px;
+            background-color: red;
+            float: left;
+        }
+        .box2{
+            width: 150px;
+            height: 200px;
+            background-color: yellow;
+            float: left;
+        }
+        .box3{
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!--<span>文字</span>-->
+    <!--<span>文字</span>-->
+
+    <!--
+        如果父元素有足够的空间，那么三哥紧靠着二哥，二哥紧靠着一哥，一哥靠着边。
+        如果没有足够的空间，那么就会靠着一哥，如果没有足够的空间靠着1哥，它会自己往边靠。
+    -->
+    <div class="box1">一哥</div>
+    <div class="box2">二哥</div>
+    <div class="box3">三哥</div>
+
+</body>
+</html>

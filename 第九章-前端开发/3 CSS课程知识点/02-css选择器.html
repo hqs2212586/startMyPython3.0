@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css的选择器</title>
+    <!--内嵌样式-->
+    <style type="text/css">
+        body{
+            color:gray;
+            font-size: 12px;
+        }
+        /*!* 1、标签选择器 *!*/
+        /*p{*/
+            /*color: red;*/
+            /*font-size: 20px;*/
+        /*}*/
+        /*span{*/
+            /*color: purple;*/
+        /*}*/
+
+        /* 2、id选择器 */
+        #box{
+            /*设置了背景颜色*/
+            background-color: green;
+        }
+        #s1{
+            color: red;
+        }
+        #s2{
+            font-size: 30px;
+        }
+        /* 3、类选择器 */
+        .title{
+            color:yellowgreen;
+            font-size: 12px;
+        }
+        .alex{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        css的选择器分两种：1、基本选择器 2、高级选择器
+    -->
+    <div>
+        <p>
+            一个段落
+        </p>
+        <ul>
+            <li>
+                <span>
+                    按实际低瓦斯
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <p>我是另外一个段落</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="box">
+        <!--html里面id是唯一的，id的值不能重复-->
+        <span id="s1">123</span>
+        <span id="s2">957</span>
+    </div>
+
+    <div>
+        <h3 class="title">我是一个三级标题</h3>
+        <h3>我是一个三级标题</h3>
+        <h3 class="title alex">我是一个三级标题</h3>
+        <h3>我是一个三级标题</h3>
+        <h3>我是一个三级标题</h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>常用标签一</title>
+    </head>
+    <body>
+        <!--class用来取名字-->
+        <div class="p1">
+            <!--设置id为p1-->
+            <p style="height: 2000px" id="p1">顶部</p>
+        </div>
+
+        <!--body相关标签-->
+        <div class="heading">
+            <!--heading:标题h1~h6，没有h7标题-->
+            <!--块级元素，1、独占一行 2、可以设置宽高-->
+            <h1>一级标题</h1><h2>二级标题</h2>
+            <h3>三级标题</h3>
+            <h4>四级标题</h4>
+            <h5>五级标题</h5>
+            <h6>六级标题</h6>
+        </div>
+
+        <div class="p1">
+            <!--段落标签-->
+            <p><b>路飞学城</b><i>立志帮助</i><u>有志向的</u><s>年轻人通过努力</s><sup>学习获得</sup><sub>体面的工作和生活</sub>!路飞学员通过学习Python ,金融分析,人工智能等互联网最前沿技术,开启职业生涯新可能</p>
+            <p>路飞学城立志帮助有志向的年轻人通过努力学习获得<br>体面的工作和生活!路飞学员通过学习Python ,金融分析,人工智能等互联网最前沿技术,开启职业生涯新可能</p>
+        </div>
+
+        <div class="anchor">
+            <!--a标签属于行内标签：在一行内显示 设置宽高不起作用-->
+            <!--_self：默认值，在当前网站打开资源
+                _blank：在新的网站打开资源
+            -->
+            <a href="https://www.luffycity.com" target="_blank" title="luffy_code_test">路飞学城网站</a>
+
+            <!--点击下载压缩包资源-->
+            <a href="./a.zip">下载压缩包</a>
+
+            <!--点击跳转到邮箱页面给目标写邮件-->
+            <a href="mailto:443614404@qq.com"style="width: 500px;height: 100px">联系我们</a>
+
+            <!--返回页面顶部的内容-->
+            <a href="#">跳转到顶部</a>
+
+            <!--返回某个id-->
+            <a href="#p1">跳转到顶部的段落标签id为p1</a>
+
+            <!-- javascript:是表示在触发<a>默认动作时，执行一段JavaScript代码，而
+            javascript:; 表示什么都不执行，这样点击<a>时就没有任何反应。 把a标签的默认动作取消-->
+            <a href="javascript:alert(1)">内容</a>
+            <a href="javascript:;">内容</a>
+        </div>
+
+<div class="list">
+    <!--无序列表-->
+    <ul type="none">
+        <li>我的账户&nbsp;&nbsp;&nbsp;&nbsp;&gt;></li>
+        <li>我的订单&nbsp;&nbsp;&nbsp;&nbsp;&yen;></li>
+        <li>我的优惠券&nbsp;&nbsp;&nbsp;&nbsp;&copy;></li>
+        <li>我的收藏&nbsp;&nbsp;&nbsp;&nbsp;&reg;></li>
+        <li>退出></li>
+    </ul>
+    <hr>
+    <!--有序列表-->
+    <ol type="I">
+        <li>我的账户></li>
+        <li>我的订单></li>
+        <li>我的优惠券></li>
+        <li>我的收藏></li>
+        <li>退出></li>
+    </ol>
+</div>
+
+        <div class="image">
+             <!--1、可设宽高；2、在一行内显示，它叫行内块标签-->
+            <!--<img src="./homesmall.png" alt="python的图片">-->
+            <!--<img src="./homesmall2.png" alt="linux的图片">-->
+
+            <!--改写为两个图片独占一行，鼠标移动上去显示小手的状态-->
+            <div class="python">
+                <a href="#p1"><img src="./homesmall.png" alt="python的图片"></a>
+            </div>
+            <div class="linux">
+                <a href="#p1"><img src="./homesmall2.png" alt="linux的图片"></a>
+            </div>
+        </div>
+
+        <!--
+        三种标签：
+            1、块级元素（块级标签）：独占一行，可设宽高，如果不设宽度，浏览器的宽度。
+            2、行内元素：在一行内展示，不能设置宽高，它的宽高根据内容去填充。
+            3、行内块元素：在一行内展示，可设宽高。
+        -->
+    </body>
+</html>
