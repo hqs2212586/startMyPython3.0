@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位特性</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            background-color: green;
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+        .box3{
+            background-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <!--相对定位三大特性
+    1.不脱标————不脱离标准流
+    2.形影分离————本身和影子分不开
+    3.老家留坑————还保留在原来的位置上
+    会影响页面的布局，因此相对定位在页面中没有什么太大的作用。
+    -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

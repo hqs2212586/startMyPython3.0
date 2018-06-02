@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接美化</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .nav{
+            width: 960px;
+            /* height: 40px; */
+            overflow: hidden;  /* 清除浮动 */
+            margin: 100px auto 0;  /* 上：100px  左右居中  下：0 */
+            background-color: purple;
+            /* 设置圆角 */
+            border-radius: 5px;  /* 上右下左都切除半径3px的一小块——美化导航栏边角 */
+        }
+        .nav ul li{
+            float: left;
+            width: 160px;
+            height: 40px;   /* 浮动元素不会填充父元素的高度 */
+            /* color: white; */
+            line-height: 40px; /* 行高 */
+            text-align: center;  /* 文本居中对齐 */
+        }
+        /* a标签不继承父元素的color，要给a标签单独设置 */
+        .nav ul li a{
+            display: block;  /* <a>标签是行内元素不能设宽高，因此转化为块级元素 */
+            width: 160px;
+            height: 40px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none; /* 去除a标签默认样式 */
+            font-family: "HanziPen SC";   /*字体*/
+        }
+        .nav ul li a:hover{  /* 伪类选择器，鼠标悬浮在元素上应用样式 */
+            background-color: #E766EA;  /* 字体变色 */
+            font-size: 20px;  /* 字体变大 */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+            <li>
+                <a href="">网站导航</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

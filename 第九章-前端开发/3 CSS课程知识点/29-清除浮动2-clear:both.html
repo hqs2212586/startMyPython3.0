@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 400px;
+        }
+        ul{
+            list-style: none;  /* 去除ul默认样式 */
+        }
+        div ul li{
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: red;
+        }
+        .box{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>python</li>
+            <li>web</li>
+            <li>linux</li>
+            <!--给浮动元素最后面加一个空的div，并且该元素不浮动，
+            然后设置clear: both 清除别人对我的浮动影响-->
+            <div class="clear"></div>
+            <!--内墙法-->
+            <!--问题：无缘无故加了一个div元素，结构冗余-->
+        </ul>
+    </div>
+    <div class="box">
+
+    </div>
+</body>
+</html>

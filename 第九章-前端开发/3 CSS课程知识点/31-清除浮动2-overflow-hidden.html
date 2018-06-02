@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>overflow:hidden</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 400px;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;  /* 去除ul默认样式 */
+        }
+        .box ul li{
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: red;
+        }
+        .box2{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>python</li>
+            <li>web</li>
+            <li>linux</li>
+        </ul>
+    </div>
+    <div class="box2">
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素清除法（常用）</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 400px;
+        }
+        ul{
+            list-style: none;  /* 去除ul默认样式 */
+        }
+        div ul li{
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: red;
+        }
+        .box{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+        /*伪元素选择器——在...之后添加内容*/
+        .clearfix:after{
+            /*必须要写下面这三句话*/
+            /*content: '';*/
+            /*clear: both;*/
+            /*display: block;*/
+
+            /*新浪网清除浮动伪元素方法*/
+            content: '.';   /* content设置'.'内容后会占用一行内容区域 */
+            clear: both;
+            display: block;
+            visibility: hidden;  /* 隐藏content内容"." */
+            height: 0;         /* 将div.clea */
+        }
+    </style>
+</head>
+<body>
+    <div class="clearfix">
+        <ul>
+            <li>python</li>
+            <li>web</li>
+            <li>linux</li>
+
+    </div>
+    <div class="box">
+
+    </div>
+</body>
+</html>

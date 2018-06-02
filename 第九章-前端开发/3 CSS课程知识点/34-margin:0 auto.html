@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>margin:0 auto</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 780px;
+            height: 50px;
+            background-color: red;
+            /*水平居中盒子*/
+            margin: 0 auto;
+
+            /*水平居中另一种表示*/
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+
+/*文字居中的属性*/
+text-align: center;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!--
+        1.使用margin:0 auto;  水平居中盒子，必须要有width，而且是必须要有明确的width。
+        文字水平居中使用text-align:center
+
+        2.只有标准流下的盒子才能使用margin：0 auto;这个属性。
+        当一个盒子浮动了，固定定位，绝对定位了，margin:0 auto;就不能用了
+
+        3.margin:0 auto;是居中盒子而不是居中文本，文字水平居中使用test-align;
+        -->
+        文字
+    </div>
+</body>
+</html>
