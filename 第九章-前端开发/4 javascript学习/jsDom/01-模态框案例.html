@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态框</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,body {
+            height: 100%;
+        }
+        #box {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.3);  // .3代表透明度，1为100，不透明
+        }
+        #content {
+            position: relative;
+            top: 150px;
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: red;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+        #span1 {
+            position: absolute;
+            background-color: #FC4838;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">弹出</button>
+</body>
+<script type="text/javascript">
+    // dom document object model
+    // 树状结构
+    /*
+    html
+    head body  节点
+         span button img
+     */
+    console.log(document);
+    // 1.getElementById() 获取dom元素
+    var btn = document.getElementById('btn');
+
+    // 2.createElement() 创建divdom元素
+    var oDiv = document.createElement('div');
+    var oP = document.createElement('p');
+    var oSpan = document.createElement('span');
+
+    // 拿到节点对象，设置相应的属性
+    oDiv.id = 'box';
+    oP.id = 'content';
+
+    // 节点元素调用innerHTML 设置相关的内容
+    oP.innerHTML = '模块框成功弹出';
+    oSpan.id = "span1";
+    oSpan.innerHTML = 'X';
+
+    // DOM元素用append()追加子节点
+    oDiv.appendChild(oP);   // 添加子节点
+    oP.appendChild(oSpan);
+
+    console.log(btn);
+    // 通过parentNode取到父节点
+    btn.onclick = function () {
+        // alert(1);
+        // 动态的添加到body的一个div
+        // console.log(btn.parentNode);
+        console.log(this);
+        this.parentNode.insertBefore(oDiv, btn);
+    }
+    oSpan.onclick = function () {
+        // removeChild 删除创建的对象
+        oDiv.parentNode.removeChild(oDiv);
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM中open和close方法</title>
+</head>
+<body>
+    <!--行间js中的open() window不能省略-->
+    <button onclick="window.open('http://www.sina.com.cn/')">新浪网站</button>
+
+    <button>打开百度</button>
+
+    <button>打开空白页面</button>
+
+    <!--<button onclick="window.close()">关闭</button>-->
+    <!--脚本不得关闭非脚本打开的窗口。-->
+
+    <button>关闭</button>
+</body>
+<script type="text/javascript">
+
+    var oBtn = document.getElementsByTagName('button')[1];  // button标签第二个
+    // 此次windos对象可以省略
+    oBtn.onclick = function () {
+        open("https://www.baidu.com");
+    }
+
+    var oBtnBlank = document.getElementsByTagName('button')[2];
+    oBtnBlank.onclick = function () {
+        // 原页面，打开一个空白页面
+        open('about:blank', "_self");
+    }
+
+    var CloseBtn = document.getElementsByTagName('button')[3];
+    CloseBtn.onclick = function () {
+        if (confirm("是否关闭")) {
+            close();
+        }
+    }
+</script>
+</html>

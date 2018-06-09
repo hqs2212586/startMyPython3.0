@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 1.对象的创建
+        // 1.字面量方式创建  (推荐使用这种方式  简单直观)
+        // key:value 字典的方式存储
+        var stu = {
+            name:'alex',
+            age:22,
+            fav:'鸡汤'
+        }
+        console.log(stu);    // {name: "alex", age: 22, fav: "鸡汤"}
+        console.log(window);  // window通过构造函数实现  Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …}
+        // 点语法：包括get方法和set方法
+        var n = stu.name;
+        console.log(n);     // alex
+
+        stu.age = 34;
+        console.log(stu.age);  // 34
+
+        // 2.使用Object()创建对象
+        // function add() {
+        //
+        // }
+        // add()
+
+        // Object() 构造函数， 1.首字母大写，碰到构造函数，要想创建对象，需要用new
+        var obj = new Object();
+        obj.name = 'xiaomage';
+        console.log(obj);    // {name: "xiaomage"}
+
+        //------------------构造函数---------------------------
+        // 1.函数名首字母要大写
+        // 2.构造函数不需要return
+        // 3.为对象添加成员变量：this  (类似python中self)
+        var Stu = function () {
+            this.name = '武大';
+            this.age = 110;
+            this.fav = function () {
+                console.log('泡妹子')
+            }
+        }
+
+        // 创建这个对象
+        var s = new Stu();
+        console.log(s);    // Stu {name: "武大", age: 110, fav: ƒ}
+
+        var s1 = new Stu();
+        console.log(s1);
+        // 弊端：每次new一个新对象，里面的成员变量和方法都一样。
+
+        // 推荐使用的构造函数的方式一：
+        function Animal() {
+            this.name = 'jingjing';
+            this.age = 12;
+            this.fav = function () {
+                console.log(this.age)
+            }
+        }
+        var a = new Animal();
+        a.fav();   // 输出：12
+
+        // 另一种写法，方式二：
+        function Animal2() {
+            this.name = "jingjing";
+            this.age = 12;
+        }
+        Animal2.prototype.showname = function () {
+            alert(this.name);
+        }
+        // 可以在外部任意添加新的方法,不用把所有的方法写在函数中
+        Animal2.prototype.showage = function () {
+            alert(this.age);
+        }
+        var b = new Animal2()
+        b.showname()
+
+
+    </script>
+</body>
+</html>

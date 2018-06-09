@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String_Number</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 内置对象
+        // String 字符串对象
+        var str = "hello alex";
+        console.log(str.length);  // 输出：10 （5+1+4）
+
+        // 转换为大写
+        var bigStr = str.toUpperCase();
+        console.log(bigStr);     // HELLO ALEX
+        // 转换为小写
+        console.log(bigStr.toLowerCase());   // hello alex
+
+        // split()第一个参数是以什么样的字符串进行切割；第二个参数是返回的数组的最大长度
+        var newArr = str.split(' ',1);
+        console.log(newArr);  // ["hello"]
+        var newArr2 = str.split('',3);
+        console.log(newArr2);  // (3) ["h", "e", "l"]
+
+        // substring 左闭右开，会返回一个新的字符串
+        var a = str.substring(2,6);
+        console.log(a);    // llo
+
+        // number
+        // 将number类型转换成字符串类型
+        var num = 132.32;
+        var numStr = num.toString();
+        console.log(typeof numStr);   // string
+
+        // 四舍五入
+        var num2 = 33.31331341;
+        var newNum = num2.toFixed(2);
+        console.log(newNum);  // 33.31
+    </script>
+</body>
+</html>

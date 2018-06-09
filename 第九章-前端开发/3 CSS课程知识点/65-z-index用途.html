@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>z-index应用</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        body{
+            /*给body设置导航栏的高度，来显示下放图片的整个内容*/
+            padding-top: 49px;
+        }
+        .wrap{
+            width: 100%;
+            height: 49px;
+            background-color: #000;
+            /*给父盒子设置固定定位，一定一定要加top属性和left属性*/
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999999;
+        }
+        .wrap .nav{
+            width: 960px;
+            height: 49px;
+            margin: 0 auto;
+        }
+        .wrap .nav ul li{
+            float: left;
+            width: 160px;
+            height: 49px;
+            text-align: center;  /*中间对齐*/
+        }
+        .wrap .nav ul li a{
+            width: 160px;
+            height: 49px;
+            display: block;
+            color: #FFF;
+            font: 20px/49px "Hanzipen SC";  /*大小、行高(让文字垂直居中)  字体*/
+            background-color: paleturquoise;
+        }
+        .wrap .nav ul li a:hover{   /*选择鼠标指针浮动在其上的元素，并设置其样式*/
+            background-color: #FC4838;
+            font-size: 22px;
+        }
+        .app{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+                <li>
+                    <a href="#">网页开发</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <div class="app"></div>
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+    <img src="./images/bojie.jpg" alt="">
+</body>
+</html>

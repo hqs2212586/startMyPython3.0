@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scroll系列</title>
+</head>
+<body style="width: 2000px;height: 2000px;">
+    <div style="height: 200px;background-color: red;"></div>
+    <div style="height: 200px;background-color: green;"></div>
+    <div style="height: 200px;background-color: yellow;"></div>
+    <div style="height: 200px;background-color: blue;"></div>
+    <div style="height: 200px;background-color: gray;"></div>
+
+    <div id='scroll' style="width: 200px;height: 200px;border: 1px solid red;
+    overflow: auto;padding: 10px;margin: 5px 0px 0px 0px;">
+        <p>
+            路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城
+            路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城
+            路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城
+            路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城
+            路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城路飞学城
+        </p>
+    </div>
+
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        // 实时监听滚动事件
+        window.onscroll = function () {
+            // console.log(111);
+            // console.log('上边'+ document.documentElement.scrollTop);
+            // console.log('左边'+ document.documentElement.scrollLeft);
+            // console.log('宽'+ document.documentElement.scrollWidth);
+            // console.log('高'+ document.documentElement.scrollHeight);
+        }
+
+        var s = document.getElementById('scroll');
+
+        s.onscroll = function () {
+            console.log('上边'+ s.scrollTop);
+            console.log('左边'+ s.scrollLeft);
+            console.log('宽'+ s.scrollWidth);
+            // scrollHeight：内容的高度+padding  不包含边框和margin
+            console.log('高'+ s.scrollHeight);
+        }
+    }
+
+</script>
+</html>

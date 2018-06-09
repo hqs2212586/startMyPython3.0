@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组常用方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+// 1.数组的合并  concat()
+var north = ['北京','山东','天津'];
+var south = ['东莞','深圳','上海'];
+
+var newArr = north.concat(south);
+console.log(newArr);    // (6) ["北京", "山东", "天津", "东莞", "深圳", "上海"]
+
+// 2.将数组转换成字符串
+var score = [98,78,76,100,0];
+
+// toString() 直接转换为字符串  每个元素之间使用逗号隔开
+var str = score.toString();
+console.log(str);   // 98,78,76,100,0
+
+// join()方法，将数组中的元素使用指定的字符串链接起来，它会形成一个新的字符串
+var str2 = score.join('|');
+console.log(str2);   // 98|78|76|100|0
+
+// 3.查找下标
+// indexOf()  正向查找
+var index = score.indexOf(78);
+console.log(index);   // 输出：1,说明数组是从0开始
+// 如果查找的值不再数组中则返回-1
+var indexNull = score.indexOf(101);
+console.log(indexNull);   // -1
+
+// lastindex() s 反向查找
+var lastIndex = score.lastIndexOf(78);
+console.log(lastIndex);    // 1  (依然是1，依然是从0开始)
+
+// 4.数组的排序
+var names = ['alex','xiaoma','tanhuang','angel'];
+
+// 反转数组
+var reverseNames = names.reverse();
+console.log(reverseNames); // (4) ["angel", "tanhuang", "xiaoma", "alex"]
+console.log(names);   // (4) ["angel", "tanhuang", "xiaoma", "alex"]
+
+// sort():按照26个英文字母排序数组
+var enames = names.sort();
+console.log(enames);   // (4) ["alex", "angel", "tanhuang", "xiaoma"]
+
+// 5.移除元素和添加元素
+// shift()移除数组中第一个元素 ,返回的结果是移除的第一个元素，原来数组的第一个元素已被移除
+var firstName = names.shift();
+console.log(firstName);   // alex
+console.log(enames);    // (3) ["angel", "tanhuang", "xiaoma"]
+
+// unshift() 想数组的开头添加一个或多个元素，并返回新的长度。
+var lastname = names.unshift();  // 添加为空，但是names中本来就有三个元素
+console.log(lastname);   // 3
+var lastname = names.unshift("shanshan");
+console.log(lastname);   // 4  返回的是新的长度
+
+// push()  pop()
+// push()  向数组的末尾添加一个或多个元素，并返回新的长度
+var newNames = names.push('老村长', '嘿嘿嘿');
+console.log(newNames);   // 6
+console.log(names);     // (6) ["shanshan", "angel", "tanhuang", "xiaoma", "老村长", "嘿嘿嘿"]
+
+// pop()  删除数组的最后一个元素
+var a = names.pop()  // a 是被删除的元素（注意：不是索引了）
+console.log(a)       // 嘿嘿嘿
+console.log(names)   // (5) ["shanshan", "angel", "tanhuang", "xiaoma", "老村长"]
+
+// 练习，把下面的字符串反转
+var str = 'hello luffy';
+console.log(str.split('').reverse().join(''))  // yfful olleh
+
+    </script>
+</body>
+</html>

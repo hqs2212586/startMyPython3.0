@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从父现象</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tianliang{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+            z-index: 3;
+        }
+        .tianliang .sendie{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 240px;
+            left: 300px;
+            z-index: 333;
+        }
+        .linzy{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            z-index: 2;
+        }
+        .linzy .brother{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 260px;
+            left: 330px;
+            z-index: 222;
+        }
+        p{
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tianliang">
+        tianliang:3
+        <p class="sendie">tianliang-son:333</p>
+    </div>
+    <div class="linzy">
+        linzy:5
+        <p class="brother">linzy-son:222</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿淘宝</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #search {
+            position: relative;
+            left: 10px;
+        }
+        input {
+            outline: none;  // 去除框
+            display: block;  // 行内元素转化为块级元素
+            width: 490px;
+            height: 20px;
+            margin-top: 20px;
+            font-size: 12px;
+            border: 2px solid orange;
+            border-radius: 10px;  // 美化边框
+        }
+        label {
+            position: absolute;
+            top: 24px;
+            left: 10px;
+            font-size: 12px;
+            color: gray;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="search">
+        <input type="text" id="text"/>
+        <label for="txt" id="msg">路飞学城</label>
+
+    </div>
+</body>
+<script type="text/javascript">
+    var txt = document.getElementById('text');
+    console.log(txt);  // <input type="text" id="text">
+    var msg = document.getElementById('msg');
+
+    // oninput 检测用户表单输入的时候
+    txt.oninput = function () {
+        // 输入为空的情况
+        if (this.value == '') {
+            msg.style.display = 'block';
+            // console.log(msg.style);   // CSSStyleDeclaration {0: "display", alignContent: "", alignItems: "", alignSelf: "", alignmentBaseline: "", all: "", …}
+        } else {
+            msg.style.display = 'none';
+        }
+    }
+</script>
+</html>

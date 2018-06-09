@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        #tab {
+            width: 480px;
+            margin: 20px auto;
+            border: 1px solid red;
+
+        }
+
+        ul li {
+            float: left;
+            width: 160px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #cccccc;
+        }
+        li.active {
+            background-color: #ffffff;
+        }
+        ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        p {
+            display: none;  /* 隐藏内容 */
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: #ffffff;
+        }
+        p.active {
+            display: block;  /* 转化为块级元素 */
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul>
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">图片</a></li>
+
+        </ul>
+        <p class="active">首页内容</p>
+        <p>新闻内容</p>
+        <p>图片内容</p>
+    </div>
+</body>
+<script type="text/javascript">
+    // getElementsByTagName() 方法会使用指定的标签名返回所有的元素（作为一个节点列表）
+    var tabli = document.getElementsByTagName('li');
+    // console.log(tabli);  // HTMLCollection(3) [li.active, li, li]
+
+    var tabContent = document.getElementsByTagName('p');
+
+    for (var i = 0; i < tabli.length; i++) {
+        // 注意：for循环的一个坑，保存i的变量，方便后面使用
+        tabli[i].index = i;
+        tabli[i].onclick = function () {
+
+            for (var j = 0; j < tabli.length; j++) {
+                tabli[j].className = "";   // class置空
+                tabContent[j].className = '';
+            }
+            // 给li标签加active
+            this.className = 'active';
+            console.log(this.index);
+            tabContent[this.index].className = 'active';
+        }
+    }
+
+</script>
+</html>

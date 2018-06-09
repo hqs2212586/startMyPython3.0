@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="printLuffy()">打印</button>
+    <button onclick="findLuffy()">查找</button>
+</body>
+<script type="text/javascript">
+    // 1.js的核心 ECMAScript  DOM  BOM
+    // BOM:Browser Object Model 浏览器对象模型
+    // 核心 浏览器
+
+    // 输出  屏幕宽高  滚动宽高  setInterval等方法  window.open() close() location
+
+    // 1.alert()
+
+    // 2.用于浏览器的调试
+    console.log('路飞学城');
+
+    // 3.prompt('message',defaultValue)
+    var pro = prompt('路飞学城',443);
+    console.log(pro);
+
+    // 4.confirm() :如果点击确定返回true，如果点击取消，就返回false
+    var m = confirm("学习BOM");
+    console.log(m);
+    
+    function printLuffy() {
+        // window.print();
+        print();   // 直接调用打印机
+    }
+    function findLuffy() {
+        var m2 = confirm("学习BOM");
+        find(m2);
+    }
+</script>
+</html>

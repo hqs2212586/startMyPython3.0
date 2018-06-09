@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播图</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            float: left;
+
+        }
+        .box {
+            width: 600px;
+            height: 200px;
+            margin: 50px auto;
+            /*当内容溢出元素框时,内容会被修剪，并且其余内容是不可见的*/
+            overflow: hidden;
+            position: relative;
+        }
+        .box ul {
+            /*400%代表四个盒子的位置*/
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><a href="#"><img src="images/01.jpg"></a></li>
+            <li><a href="#"><img src="images/02.jpg"></a></li>
+            <li><a href="#"><img src="images/03.jpg"></a></li>
+            <li><a href="#"><img src="images/04.jpg"></a></li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    var box = document.getElementsByClassName('box')[0];
+    var ul = box.children[0];
+
+    var num = 0;
+    timer = setInterval(autoPlay, 30)
+    // 函数声明
+    function autoPlay() {
+        num -= 2;
+        // 三元运算符:语法是 条件? 结果1: 结果2;
+        // 满足条件num<=-600时，num=0,否则num等于现在的值
+        num <= -600 ? num=0 : num;
+        ul.style.left = num + 'px';
+    }
+    // 鼠标移上去的时候，停止定时器
+    box.onmouseover = function () {
+        clearInterval(timer);
+    }
+    // 鼠标移开的时候,开启定时器
+    box.onmouseout = function () {
+        timer = setInterval(autoPlay,30);
+    }
+
+</script>
+</html>

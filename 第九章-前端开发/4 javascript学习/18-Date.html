@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+// 创建日期对象
+var myDate=new Date();
+
+// 获取一个月中的某一天
+console.log(myDate.getDate());   // 7 (今天是6月7日)
+console.log(Date());    // Thu Jun 07 2018 11:58:22 GMT+0800 (CST)
+// 获取一年中的某一个月 从 Date 对象返回月份 (0 ~ 11)
+// 注意：表示月份的参数介于 0 到 11 W3C Javascript 最新Chm格式手册.chm之间。也就是说，如果希望把月设置为 6 月，则参数应该是 5。
+console.log(myDate.getMonth()+1); // 6
+
+// getDay()  从 Date 对象返回一周中的某一天 (0 ~ 6)
+console.log(myDate.getDay());  // 4 (今天是周四)
+// 注意：星期一是"1"；星期天是"0"。
+
+    </script>
+</body>
+</html>

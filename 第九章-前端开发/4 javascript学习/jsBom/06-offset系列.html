@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset系列</title>
+    <style type="text/css">
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            padding: 10px;
+            margin: 10px;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--行内样式-->
+    <!--<div id="box" style="width: 200px;height: 200px;border: 1px solid red;padding: 10px;margin: 10px;">-->
+    <div id="box"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var box = document.getElementById('box');
+        // 占位宽 高 top left
+        /*
+        offsetTop：如果盒子没有设置定位  到浏览器的顶部距离,
+                   如果盒子设置定位，以父盒子为基准的top值
+        offsetLeft: 如果盒子没有设置定位  到浏览器左部的距离
+                    如果盒子设置定位，以父盒子为基准的left值
+        offsetWidth：内容+padding+border
+        offsetHeight: 内容+padding+border
+         */
+        console.log(box.offsetTop);  //10
+        console.log(box.offsetLeft);  //18
+        console.log(box.offsetWidth); //222  200+1+1+10+10
+        console.log(box.offsetHeight);  //222
+
+
+    }
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // if语句 如果() .....
+        var ji = 10;
+        if(ji>=20){
+            console.log("大吉大利，今晚吃鸡")  //command +'+'|'-' 可以控制控制台放大缩小
+        }else{
+            console.log('很遗憾，继续努力')
+        }
+
+        // if...else... 伪代码:
+        /*
+        if (true) {
+           //执行操作
+        }else if(true){
+            //满足条件执行
+        }else if(true){
+           //满足条件执行
+        }else{
+          //满足条件执行
+        }
+        */
+
+        // alert(222)
+        // 浏览器解析代码的顺序——从上往下执行
+
+// 考试系统录入
+var math = 90;
+var english = 85;
+var sum= 485;
+
+// 1.模拟 总分>400并且数学成绩>89分，被清华大学录入
+// 逻辑与&& 两个条件都成立的情况下才成立
+if (sum>400 && math>90) {
+    alert("被清华大学录取")
+}else{
+    alert('高考失利，继续努力')
+}
+// 2.模拟 总分>400或者你的英语成绩>85，被复旦大学录取
+// 逻辑或  只要有一个条件成立，就成立
+if (sum>400 || english>85) {
+    alert("被复旦大学录取")
+}else{
+    alert("高考又失利，继续努力")
+}
+
+// if条件内还允许计算
+if ((sum>500) || (math + english)>170) {
+    alert(211)
+}
+
+    </script>
+</body>
+</html>

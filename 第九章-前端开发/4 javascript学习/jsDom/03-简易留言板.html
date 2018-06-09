@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+    <h1>简易留言板</h1>
+    <div id="box">
+        
+    </div>
+    <textarea id="msg"></textarea>
+    <input type="button" id="btn" value="留言">
+    <button onclick="sum()">统计</button>
+</body>
+<script type="text/javascript">
+    var ul = document.createElement('ul');
+    var box = document.getElementById('box');
+    box.appendChild(ul);
+
+    var btn = document.getElementById('btn');
+    var msg = document.getElementById('msg');
+
+    var count = 0;  // 全局变量计数
+
+    btn.onclick = function () {
+        console.log(msg.value);
+
+        var li = document.createElement('li');
+
+        //设置内容
+        li.innerHTML = msg.value + "<span>&nbsp;&nbsp;X</span>";
+
+        var lis = document.getElementsByTagName('li');
+        if (lis.length == 0) {
+            ul.appendChild(li);
+            count++;
+        } else {
+            ul.insertBefore(li,lis[0]);
+            count++;
+        }
+        // 留言按钮提交后清空留言框
+        msg.value = "";
+
+        // 点击X删除留言
+        var spans = document.getElementsByTagName('span');
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].onclick = function () {
+                // 移除li标签
+                ul.removeChild(this.parentNode);  // parentNode获取父级元素
+                count--;
+            }
+        }
+    }
+
+    function sum() {
+        alert("一共发布了" + count + "留言");
+    }
+    
+</script>
+</html>

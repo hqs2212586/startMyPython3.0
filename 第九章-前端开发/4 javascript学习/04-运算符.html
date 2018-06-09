@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运算符</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //1.赋值运算符
+        var money = prompt("请输入金额....");
+        var saveMoney = money * (1+0.02);
+        console.log(saveMoney);  // 打开页面输入100，控制台输出102
+
+        //2.算数运算
+        var a = 10;
+        var b = 4;
+        var sum = a + b;
+        var min = a - b;
+
+        // + - * /除  %取余
+        var div = a/b;
+        console.log(div);
+
+        var lef = a%b;
+        console.log(lef);
+
+        //复合运算符
+        var c = 7, d = 8;
+        // d = c + d;
+        d += c;  //d = 15
+        console.log(d);
+
+        //自增  自减
+        //d++是先赋值后++：现将d的值赋值给c1，然后再让d加上1对d赋值
+        var c1 = d++;  // c1=15 d=16
+        console.log(c1);
+        console.log(d);
+
+        //++d：先相加后赋值
+        var c2 = ++d;  // c2=17 d=17
+        console.log(c2);
+        console.log(d);
+
+        // 3.比较运算符  >,<,>=,<=,==,===全等
+        console.log(5>6);  // 输出false
+
+        // 隐式转换==比较的是值的大小，===是类型和值的比较
+        console.log("5"==5);   // 输出true
+        console.log("5"===5);  // 输出false
+
+        // 4.逻辑运算符
+        // &&(and)都真才为真
+        console.log(true&&true);    // 输出true
+        console.log(true&&false);   // 输出false
+        console.log(false&&false);    // 输出false
+
+        // ||(or)有真就真
+        console.log(true||false);   // 输出true
+        console.log(false||false);  // 输出false
+
+
+    </script>
+</body>
+</html>

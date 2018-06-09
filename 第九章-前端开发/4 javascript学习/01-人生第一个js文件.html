@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .span1{
+            color: red;
+        }
+    </style>
+    <!--外链式-->
+    <script src="1.js"></script>
+
+</head>
+<body>
+    <!--dom (document object model) 行内式引入-->
+    <p id="p1" onclick="clickhandler()">123</p>
+    <!--<span>234</span>-->
+
+<!--内部式 建议
+引入的时候要在body之后，我们要等待所有的dom元素加载完成之后再去执行相应的js操作-->
+<script type="text/javascript">
+    //document.write()向文档内输入内容，不会覆盖原文档的内容
+    document.write('<span class="span1">233<span>')
+
+    //console控制台 输出【开发者工具】
+    //向控制台抛出一个信息
+    console.log('星儿今天很漂亮！')
+    //向控制台抛出一个异常
+    console.error('错误了')
+    //console.dir()输入一个对象的全部属性
+    console.dir(window)
+    //console.clear()清除
+    var a = prompt("请输入你的名字");  // 输入内容，具有返回值
+    console.log(a)
+
+    function clickhandler() {
+        // 弹出警告框
+        /* 丹参滴丸无
+            阿达 阿达
+        */
+        // window.alert(1);
+        // window默认可以不写
+        alert(1);
+    }
+</script>
+</body>
+</html>
+
+<!--javascript引入方式：
+    a.行内式：将javascript代码块直接卸载
+-->
