@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ToDoList—最简单的待办事项列表</title>
+    <meta name="description" content="ToDoList无须注册即可使用，数据存储在用户浏览器的html5本地数据库里，是最简单最安全的待办事项列表应用！">
+    <!--引入外部的样式表-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!--外联式引入js-->
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+    <header>
+        <!--<section> 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分-->
+        <section>
+            <!--form表单：用于显示、收集信息，并将信息提交给服务器
+            action：定义表单被提交时发生的动作提交给服务器处理程序的地址-->
+            <form action="javascript:postaction()" id="form">
+                <label for="title">ToDoList</label>
+                <!--input中placeholder属性用来设置默认值-->
+                <input type="text" id="title" name="title"
+                       placeholder="添加ToDo" required="required" autocomplete="off">
+            </form>
+        </section>
+    </header>
+
+    <!--内容区域-->
+    <section>
+        <h2 onclick="save()">
+            正在进行
+            <span id="todocount">0</span>
+        </h2>
+        <!--ol有序列表-->
+        <ol id="todolist" class="demo-box">
+            <!--<li draggable="true">-->
+                <!--<input onchange="update(0,"done",true)" type="checkbox">-->
+                <!--<p id="p-0" onclick=""></p>-->
+            <!--</li>-->
+        </ol>
+        <h2>
+            已经完成
+            <span id="donecount">0</span>
+        </h2>
+        <!--ul无序列表-->
+        <ul id="donelist">
+
+        </ul>
+    </section>
+
+    <!--底部-->
+    <footer>
+        Copyright © 2014 todolist.cn
+        <!--clear清空按钮-->
+        <a href="javascript:clear();">clear</a>
+    </footer>
+</body>
+</html>

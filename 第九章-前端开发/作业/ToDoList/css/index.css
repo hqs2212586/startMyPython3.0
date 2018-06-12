@@ -1,0 +1,157 @@
+* {   /* 通用选择器 */
+    margin: 0;
+    padding: 0;
+}
+body {  /* 标签选择器 */
+    font-size: 16px;
+    background-color: #CDCDCD;
+    min-width: 1226px;
+}
+section {
+    margin: 0 auto;
+}
+/*header部分*/
+header {
+    height: 50px;
+    background: rgba(47,47,47,0.98);  /* 透明度98% */
+}
+header section {
+    width: 600px;
+    padding: 0 10px;
+}
+label {
+    float: left;
+    width: 100px;
+    line-height: 50px;
+    font-size: 24px;
+    color: #DDD;
+    cursor: pointer;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+header input {  /* 后代选择器 */
+    float: right;
+    width: 60%;
+    height: 24px;
+    margin-top: 12px;
+    /*text-indent：首行缩进*/
+    text-indent: 10px;
+    /* 上右下左都切除半径5px的一小块——美化导航栏边角 */
+    border-radius: 5px;
+    /*box-shadow 属性向框添加一个或多个阴影*/
+    box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
+    border: none;
+}
+input:focus {  /* 伪类选择器:input输入框获取焦点时样式 */
+    /*outline(轮廓)：绘制于元素周围的一条线，位于边框边缘外围
+    outline-width:设置元素整个轮廓的宽度
+    */
+    outline-width: 0;
+}
+
+/*section部分*/
+h2 {
+    position: relative;
+}
+span {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    display: inline-block;
+    padding: 0 5px;
+    height: 20px;
+    border-radius: 20px;
+    background: #E6E6FA;
+    line-height: 22px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+ol,ul {  /* 组合选择器 */
+    padding: 0;
+    list-style: none;
+}
+li input {
+    position:absolute;
+    top:2px;
+    left:10px;
+    width:22px;
+    height:22px;
+    cursor:pointer;
+}
+p {
+    margin: 0;
+}
+li p input {
+    top: 3px;
+    left: 40px;
+    width: 70%;
+    height: 20px;
+    line-height: 14px;
+    text-indent: 5px;
+    font-size: 14px;
+}
+li {
+    height: 32px;
+    line-height: 32px;
+    background: #fff;
+    position: relative;
+    margin-bottom: 10px;
+    padding:0 45px;
+    border-radius:3px;
+    border-left: 5px solid #629A9C;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+ol li {
+    /*此光标指示某对象可被移动*/
+    cursor:move;
+}
+ul li {
+    border-left: 5px solid #999;
+    /*opacity 属性设置元素的不透明级别*/
+    opacity: 0.5;
+}
+li a {
+    position:absolute;
+    top:2px;
+    right:5px;
+    display:inline-block;
+    width:14px;
+    height:12px;
+    border-radius:14px;
+    border:6px double #FFF;
+    background:#CCC;
+    line-height:14px;
+    text-align:center;
+    color:#FFF;
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+}
+/*footer部分*/
+footer {
+    color:#666;
+    font-size:14px;
+    text-align:center;
+}
+footer a{
+    text-decoration:none;
+    color:#999;
+}
+/*@media CSS @规则 可用于根据一个或多个基于设备类型、具体特点和环境的媒体查询来应用样式。*/
+/*媒体类型：all适用于所有设备；
+           print加载合适的文档到当前使用的可视窗口;
+           screen:主要适用于彩色的电脑屏幕
+           speech:解析speech合成器
+*/
+@media screen and (max-device-width: 620px) {
+    section{
+        width:96%;
+        padding:0 2%;
+    }
+}
+@media screen and (min-width: 620px) {
+    section{
+        width:600px;
+        padding:0 10px;
+    }
+}
