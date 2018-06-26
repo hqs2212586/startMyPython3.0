@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <!--以最高的ie浏览器渲染-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!--视口的设备 移动设备优先 支持移动端 在多个设备上适应 PC iphone android-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>LuffyCity</title>
+
+        <!-- Bootstrap 必须引入Bootstrap-->
+        <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.css">
+        <style type="text/css">
+            /*不要随意修改Bootstrap提供出来的系统类，仅仅是演示这么干*/
+            [class^='col'] {
+                border: 1px solid grey;
+            }
+        </style>
+
+    </head>
+    <body>
+        <!--固定宽度容器 .container-->
+        <div class="container">
+            <h1>全局的css样式</h1>
+
+            <!--一行-->
+            <div class="row">
+                <!--一块四列-->
+                <div class="col-md-4">
+                    <h1>h1. Bootstrap heading</h1>
+                    <h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+                    <h3>h3. Bootstrap heading</h3>
+                    <h4>h4. Bootstrap heading</h4>
+                    <h5>h5. Bootstrap heading</h5>
+                    <h6>h6. Bootstrap heading</h6>
+
+                    <p>我是<span class="lead">页面</span>主题</p>
+                    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+
+                    <!--对于没用的文本使用 <s> 标签-->
+                    <s>This line of text is meant to be treated as no longer accurate.</s>
+                    <!--额外插入的文本使用 <ins> 标签-->
+                    <ins>This line of text is meant to be treated as an addition to the document.</ins>
+                    <!--为文本添加下划线，使用 <u> 标签-->
+                    <u>This line of text will render as underlined</u>
+                    <!--对于不需要强调的inline或block类型的文本，使用 <small> 标签包裹，其内的文本将被设置为父容器字体大小的 85%。标题元素中嵌套的 <small> 元素被设置不同的 font-size-->
+                    <small>This line of text is meant to be treated as fine print.</small>
+                    <!--通过增加 font-weight 值强调一段文本-->
+                    <strong>rendered as bold text</strong>
+                    <!--用斜体强调一段文本-->
+                    <em>rendered as italicized text</em>
+                </div>
+
+                <div class="col-md-4">
+                    <!--左对齐、中心对齐、右对齐-->
+                    <p class="text-left">Left aligned text.</p>
+                    <p class="text-center">Center aligned text.</p>
+                    <p class="text-right">Right aligned text.</p>
+                    <!--调整过得文本-->
+                    <p class="text-justify">Justified text.</p>
+                    <!--不对齐-->
+                    <p class="text-nowrap">No wrap text.</p>
+
+                    <!--小写-->
+                    <p class="text-lowercase">Lowercased text.</p>
+                    <!--大写-->
+                    <p class="text-uppercase">Uppercased text.</p>
+                    <!--大写字母开头-->
+                    <p class="text-capitalize">Capitalized text.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <!--响应式的表格-->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr class="active">
+                                    <th>#</th>
+                                    <th>新闻</th>
+                                    <th>年龄</th>
+                                    <th>身高</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="danger">
+                                    <td>1</td>
+                                    <td>小马哥奥术大师多哇多撒多无群安达市地王大厦多王大大所多无大多撒多无多大大所多无多无大多无大大所多无</td>
+                                    <td>18</td>
+                                    <td>180</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>2</td>
+                                    <td>小马哥</td>
+                                    <td>18</td>
+                                    <td>180</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>3</td>
+                                    <td>小马哥</td>
+                                    <td>18</td>
+                                    <td>180</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td>小马哥</td>
+                                    <td>18</td>
+                                    <td>180</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!--另起一行-->
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">用户名</label>
+                            <input type="email" class="form-control" id="username" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">密码</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="密码">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-default">登录</button>
+                        <button type="submit" class="btn btn-default">注册</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <!--隐藏-->
+                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                                <div class="input-group-addon">.00</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Transfer cash</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

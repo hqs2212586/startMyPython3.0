@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+    .show{
+        color: red;
+    }
+    </style>
+    
+</head>
+<body>
+    <form action="https://www.luffycity.com">
+        <select name="sweets" multiple=''>
+            <option value="">巧克力</option>
+            <option value="" selected=''>糖果</option>
+            <option value="">焦糖</option>
+            <option value="" selected=''>曲奇饼</option>
+            <option value="">烧饼</option>
+            <option value="">麦香饼</option>
+            <option value="">曲奇饼2</option>       
+        </select>
+
+        <input type="text" value="hello" id='target'>
+        <input type="submit" value="Luffy"/>
+        <input type="button" value="按钮" />
+		
+    </form>
+
+    <input id="other" type="text" value="Trigger the handler">
+
+    <div class="show"></div>
+
+    <script src="./jquery-3.3.1.js"></script>
+
+    <script type="text/javascript">
+
+        $(function() {
+        	
+        	
+            //change()事件————表单元素发生改变时触发事件
+            //此事件仅限于input元素、textarea框、select元素。
+            //对于选择框，复选框和单选按钮，当用户使用鼠标进行选择时，会立即触发事件。但对于其他元素类型，事件将延迟到元素失去焦点
+            $('select').change(function(){
+				console.log($('select option:selected').text());
+
+				$('.show').text($('select option:selected').text());
+            })
+
+            // select()事件————文本元素发生改变时触发事件
+            // 仅限于用在input type=text 或 textarea  表单元素
+            $('#other').select(function () {
+                console.log($(this).val());
+            })
+
+
+            // form表单和服务端有很大的挂钩：form表单有默认的submit行为，当对input type=submit按钮点击的时候会触发form的默认action行为，
+            // 此时可以调用 jquery的submit方法通过e.preventDefault()来阻止默认事件，这样我们就能动态的跟服务端来发送数据了
+            $('form').submit(function (ev) {
+                // alert(1111);  // 触发submit事件弹出1111，再触发form表单的默认行为跳转到路飞官网
+
+                // 阻止默认事件
+                ev.preventDefault();
+                alert(1111);  // 只会触发submit事件弹出1111
+            })
+
+            
+        })
+    
+    
+    
+    </script>
+    
+</body>
+</html>

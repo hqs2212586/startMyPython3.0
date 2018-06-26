@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--使用@media  必须做以下操作来兼容移动设备的展示效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        /*300px到600px之间显示的样式*/
+        /*当文档宽度大于等于 300px 并且小于等于600px （ width >=300 && width <=600）的时候显示的样式*/
+        @media only screen and (min-width: 300px) and (max-width: 600px) {
+            .box {
+                width: 200px;
+                height: 300px;
+                background: red;
+            }
+        }
+
+        /*当文档宽度大于等于 800px 盒子显示绿色*/
+        @media only screen and (min-width: 800px)  {
+            .box {
+                width: 200px;
+                height: 300px;
+                background: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>

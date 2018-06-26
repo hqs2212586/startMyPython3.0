@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			ul{list-style: none;}
+			
+			#box{
+				/*图片的宽高 240px  180px*/
+				width: 240px;
+				height: 180px;
+				position: relative;
+				margin: 50px auto;
+                /*overflow 属性规定当内容溢出元素框时发生的事情
+                    hidden：内容会被修剪，并且其余内容是不可见的*/
+				overflow: hidden;
+			}
+			
+			ul{
+				width: 960px;  /* 240*4=960 */
+				position: absolute;
+			}
+			ul li{
+                /*左浮动之后，所有图片都在一排展示*/
+				float: left;
+			}
+            p {
+                position: absolute;
+                left: 80px;
+                bottom: 30px;
+            }
+
+            p  span {
+                color: red;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                /*cursor 属性规定要显示的光标的类型（形状）
+                pointer：光标呈现为指示链接的指针（一只手）*/
+                cursor: pointer;
+
+            }
+             p span.active {
+                 color: white;
+                 background: green;   /*背景颜色*/
+             }
+		
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<!--显示轮播的图片-->
+
+				
+			</ul>
+			<p>
+				<!--显示索引-->
+			</p>
+
+			
+		</div>
+		<button id="play">轮播吧！</button>
+		<button id="stop">暂停！</button>
+		
+	</body>
+	<script src="jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			//1.获取本地的图片数据 以后再后面的课程中这些数据会从后端服务器获取
+			var imgArr = ['./01.jpg','./02.jpg','./03.jpg','./04.jpg'];
+
+			//2.动态的生成图片
+			for(var i = 0; i < imgArr.length;i++){
+				// 字符串拼接实现动态添加标签
+				$('ul').append("<li><img src="+imgArr[i]+"></li>")
+			}
+
+			//3.生产索引
+            var str = '';
+            // each(function(index,element))为每个匹配的元素规定运行的函数
+            $('li').each(function (i,ele) {
+                str += "<span>"+(i+1)+"</span>";
+            })
+            console.log(str);  // <span>1</span><span>2</span><span>3</span><span>4</span>
+            $('p').html(str);
+
+            // 4.默认设置索引的一个active
+            $('span:first').addClass('active');
+
+            var index = 0;  // index定义为全局变量
+
+            // 5.点击索引
+            $('span').click(function () {
+                $(this).addClass('active').siblings('span').removeClass('active');   // 点选到的按钮修改样式
+
+                // 获取我当前点击的索引
+                index = $(this).index();
+                //方法1:
+                // $('ul').css('left',-240*index);  // 所有图片都在一排，依次排列
+                //方法2：
+                $('ul').animate({
+                    left: -240*index
+                },100)
+            })
+
+
+            // 6.自动轮播
+            var timer = null;
+
+            $('#play').click(function () {
+                // 开启定时器： 1.索引跟着走；2.图片跟着走。
+                timer = setInterval(next,1000);
+                function next() {
+                    // console.log(index++);
+
+                    if(index == $('li').length-1) {
+                        // 图片结尾了。第四张了
+                        index = 0;
+                        // 修改span标签的第一个active
+                        $('p span').eq(index).addClass('active').siblings('span').removeClass('active');
+                        // 修改ul的样式
+                        $('ul').css('left',0);
+
+                    } else {
+                        index++;
+                        // 修改后三个span标签的active
+                        $('p span').eq(index).addClass('active').siblings('span').removeClass('active');
+                        // 修改ul的样式
+                        $('ul').css('left',-240*index);
+                    }
+                }
+
+            })
+
+            // 7.暂停轮播
+            $('#stop').click(function () {
+                clearInterval(timer);
+            })
+			
+		})
+	
+	</script>
+</html>

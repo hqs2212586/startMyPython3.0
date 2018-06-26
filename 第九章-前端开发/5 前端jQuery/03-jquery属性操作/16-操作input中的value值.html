@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作input中的value值</title>
+</head>
+<body>
+    <form action="">
+        <!--单选框-->
+        <input type="radio" name="sex"  value="112" />男
+        <input type="radio" name="sex"  value="11" checked="" />女
+        <input type="radio" name="sex"  value="11" />gay
+
+        <!--复选框-->
+        <input type="checkbox" value="a" checked=""/>吃饭
+        <input type="checkbox" value="b" checked=""/>睡觉
+        <input type="checkbox" value="c" checked=""/>打豆豆
+
+        <!--下拉列表-->
+        <select name="timespan" id="timespan" class="Wdate"   >
+            <option value="1">8:00-8:30</option>
+            <option value="2">8:30-9:00</option>
+            <option value="3">9:00-9:30</option>
+        </select>
+        <input type="text" name="" id="" value="111" />
+    </form>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+$(function () {
+    console.log($(':radio'));  // :radio 取的是type="radio"的
+    /*
+    jQuery.fn.init(3) [input, input, input, prevObject: jQuery.fn.init(1)]
+    0:input
+    1:input
+    2:input
+    length:3
+    prevObject:jQuery.fn.init [document]
+     */
+
+    console.log($(':checkbox'));
+    // input的常用类型还有：button、submit、file、text、disabled
+
+
+    //1.获取单选框的value值
+    console.log($('input[type=radio]:checked').val());  // 属性选择器；输出：11
+
+    //2.复选框中value值 仅仅是获取了第一个值
+    console.log($('input[type=checkbox]:checked').val());  // 输出：a
+
+    //3.下拉列表被选中的值
+    var obj = $('#timespan option:selected');
+    console.log(obj.val());  // 输出：1
+    // 如果<option value="2" selected="">8:30-9:00</option> 则默认选中2，输出：2
+
+    // 设置单选的值
+    $('input[type=radio]').val(['113']);
+
+    // 设置复选框的值
+    $('input[type=checkbox]').val(['b','c']);
+
+    // 设置下拉列表中选中的值，这里面必须要用select
+    $('select').val(['3','2']);
+
+    //4.文本框  设置值和获取值
+    console.log($("input[type=text]").val());  //获取文本框中的值
+    //设置值
+    $('input[type=text]').val('试试就试试');
+
+})
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>筛选方法</title>
+    <style type="text/css">
+        li.active {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="danger">1</li>
+    <li><a href="#">luffy</a></li>
+    <li class="danger">3</li>
+    <li>4</li>
+    <a href="#"> 百度</a>
+    <a href="#" id="anchor">百度</a>
+</ul>
+
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        console.log($('li'));  // 输出：jQuery.fn.init(4)   类似数组的索引
+        
+        // jQuery的遍历方法：.each()
+        // $('li').each(function (index,ele) {   // 索引，对象
+        $('ul').children().each(function (index, ele) {
+            console.log(ele);   // <li class="danger">1</li> ： js的dom对象
+            console.log(index);   // 0  ： index
+
+            // 判断当前匹配元素里是否有这个类名
+            var isDanger = $(this).hasClass('danger');
+            if (isDanger) {
+                $(this).css('color','red');
+            } else {
+                $(this).css('font-size','20px');
+            }
+        })
+
+        // children()
+        console.log($('ul').children());
+        console.log($('li'));   // 同上
+        console.log($('ul').children('.danger'));
+
+        // parent()
+        console.log($('li').parent()); // jQuery.fn.init [ul, prevObject:...
+
+        // last() 最后一个元素   prev：前一个元素
+        console.log($('li').last().prev());  // jQuery.fn.init [li.danger
+        console.log($('li').last().prevAll());
+
+        // silbings：筛选给定的同胞同类元素（不包括给定元素本身）
+        console.log($('li').siblings('li'));
+        console.log($('#anchor').siblings('a'));  // jQuery.fn.init [a, prevObject..
+
+        // 鼠标指向的li标签变大，移走后变小的选项卡效果
+        $('li').hover(function () {
+            $(this).addClass('active').siblings('li').removeClass('active');
+        })
+    })
+</script>
+</html>

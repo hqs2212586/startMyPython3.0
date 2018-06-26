@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>路飞学城</p>
+        <button>获取</button>
+
+        <ul>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+        </ul>
+
+        <span>
+            路飞吧
+        </span>
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('button').click(function () {
+            // jquery的属性操作，html属性操作：attr()
+            // attr如果有一个参数，表示获取值
+            $('#box p').text($('#box').attr('id'));  // p标签的内容：路飞学城————>box
+
+        });
+
+        // attr()如果设置两个值，表示设置属性
+        $('#box').attr('class','foo');  // 给当前标签加了类属性 <div id="box" class="foo">
+        // 设置多个值使用对象存储，如果设置多个类名不能使用attr()方法
+        $('#box').attr({'class':'foo2',name:"luffy"});  // <div id="box" class="foo2" name="luffy">
+
+        // 删除一个属性
+        // $('#box').removeAttr('name');
+        // $('#box').removeAttr('class');
+        // 删除多个属性
+        $('#box').removeAttr('name class');   // <div id="box">
+
+
+        // DOM属性操作
+        // 获取的是第一个元素的class值
+        console.log($('li').prop('class'));  // luffy
+
+        // 设置值
+        //prop()获取在匹配的元素集中的第一个元素的属性值
+        $('li').first().prop({'name':'app','name2':'app2'});
+        console.log($('li').first());   // jQuery.fn.init(1)
+
+        // 删除dom对象的name
+        $('li').first().removeProp();
+
+        console.log($('li').prop('name'));   // app
+        console.log($('li').prop('name2'));  // app2
+
+    })
+</script>
+</html>

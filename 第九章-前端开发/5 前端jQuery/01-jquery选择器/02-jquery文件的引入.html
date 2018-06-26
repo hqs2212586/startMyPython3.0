@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery文件的引入</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // window.onload = function () {
+        //     // 如果不写window.onload()代码的执行顺序————从上到下
+        //     // window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。
+        //     var oDiv = document.getElementById('box');
+        //     console.log(oDiv);
+        //     alert(444);
+        // }
+        // alert(222);
+    </script>
+    <div id="box">
+
+    </div>
+</body>
+<script src="../jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    // 如果没有引入jquery: $ is not defined
+    console.log($);
+    /* 构造函数
+    ƒ ( selector, context ) {
+
+		// The jQuery object is actually just the init constructor 'enhanced'
+		// Need init if jQuery is called (just allow error to be thrown if not included)
+		return new jQuery…
+     */
+
+    //jquery是js的一个库文件，既然是库文件，那么就会跑出来一个构造函数或者对象
+
+    //书写jquery的方式，入口函数
+    // $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕(DOM文档加载的第四步)
+    $(document).ready(function () {
+        alert(222);
+    })
+
+    //等价
+    $(function () {
+        alert(333);
+    })
+
+    window.onload = function () {
+        // 如果不写window.onload()代码的执行顺序————从上到下
+        // window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。
+        var oDiv = document.getElementById('box');
+        console.log(oDiv);
+        alert(111);
+    }
+
+    alert(444);
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件代理</title>
+</head>
+<body>
+<ul>
+    <li class="luffy">路飞</li>
+    <li>路飞</li>
+    <li>路飞</li>
+</ul>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    // 文档加载
+    $(document).ready(function () {
+        // ul下的每个li  先点击
+        // $('ul>li').bind('click',function () {
+        //     console.log($(this));    // 点击li会在控制台打印出对应的html标签信息
+        // })
+        //另一种写法：
+        // $('ul>li').click(function () {
+        //     console.log($(this));
+        // })
+
+        //事件代理   自己完成不了当前的点击事件，交给父级元素来做这件事情
+        //父级.on('事件名字','点击当前的标签元素',fn)  第二个参数其实是选择器
+        // $('ul').on('click','li',function () {
+        $('ul').on('click','#namei,.luffy',function () {  // 绑定多个选择器:注意用逗号分隔
+            console.log(this);
+        })
+
+        // 后来添加的元素
+        $('ul').append('<li>娜美</li>');
+        $('ul').append('<a id="namei">娜美</a>')
+
+        // 其他事件代理方法：delegate(绑定的选择器,绑定事件,回调函数)
+        // on(绑定事件,选择器,回调函数)  注意两者主要是参数的区别
+    })
+    
+</script>
+</html>

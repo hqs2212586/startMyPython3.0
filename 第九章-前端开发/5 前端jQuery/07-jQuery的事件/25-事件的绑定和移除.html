@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定和移除</title>
+    <style type="text/css">
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <button>按钮</button>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        // 给当前dom元素添加click事件：方式一如下
+        // $('#box').click(fn);
+
+        // 方式二：给当前的dom元素绑定事件 bind()
+        // 语法：jquery对象.bind('事件类型',fn)
+        // $('#box').bind('click mouseenter', function () {
+        //     alert('事件被绑定了')
+        // })
+
+        function add() {
+            console.log('click');
+        }
+        function add2() {
+            console.log('mouse-over')
+        }
+        // 给jquery对象添加不同的事件
+        $('#box').bind({
+            'click': add,
+            'mouseenter':add2
+        })
+
+        // 事件移除  unbind()
+        setTimeout(function () {
+            // 如果没有参数表示移除所有事件
+            // $('#box').unbind();
+
+            $('#box').unbind('click');
+        },3000)
+
+        // 后续添加的事件不能发生在未来==》动态生产的元素不能直接添加对象，里面的事件也不能发生==》事件代理
+        $('body').append('<div style="width: 200px;height: 300px;background-color: yellow">哈哈哈哈</div>')
+
+        //绑定自定义的事件
+        $('button').bind('myclick',function (ev,a,b,c) {
+            alert(111);
+
+            alert(a);  // 1
+            alert(b);  // 2
+            alert(c);  // 3
+        })
+
+        // 触发自定义的事件
+        // $('button').trigger('myclick',[1,2,3])
+    })
+</script>
+</html>

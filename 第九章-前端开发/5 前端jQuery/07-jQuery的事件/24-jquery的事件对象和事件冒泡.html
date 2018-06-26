@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				background: gray;
+			}
+			
+			p{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p class="p1"></p>
+			
+			
+			<a href="https://www.luffycity.com">luffy</a>
+			
+		</div>
+	</body>
+	<script src="jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+
+		//入口函数事件
+        $(function () {
+
+            // ev事件对象
+            $('.p1').click(function (ev) {
+                // 事件类型、事件属性
+                console.log(ev.type);   //获取事件的类型：click
+                console.log(ev.target);  //获取事件发生的DOM对象:<p class:'p1'></p
+                console.log(ev.pageX);   //获取到光标相对于页面的x的坐标: 50
+                console.log(ev.pageY);   //获取到光标相对于页面的y的坐标: 63
+                console.log(ev.which);  //鼠标单击事件中获取到鼠标的键，键盘事件中获取键盘的按键: 1
+
+                alert('当前按钮事件触发了');
+                // 常用的事件  方法：1.阻止事件冒泡   2.阻止默认事件
+
+                // 1.阻止事件冒泡，不再传到div中
+                ev.stopPropagation();
+
+            })
+            $('#box').click(function () {
+                alert('#box盒子事件触发了');
+            })
+
+            $('a').click(function (ev) {
+                // 阻止a标签的默认事件
+                ev.preventDefault();
+                // 再阻止冒泡
+                ev.stopPropagation();
+                alert('不再跳转页面');
+
+                // 方法二：
+                return false;  // 这个可以阻止a标签的默认事件和冒泡事件
+            })
+        })
+		
+	</script>
+	
+</html>

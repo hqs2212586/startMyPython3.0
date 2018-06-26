@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档操作</title>
+</head>
+<body>
+    <span>哈哈</span>
+    <ul>
+
+    </ul>
+    <button id="btn">按钮</button>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        // append()方法追加元素：
+        //第一种方式
+        // 父级ul 追加 子级li
+        $('ul').append('<li><a href="#">luffy</a></li>');
+
+        //第二种方式
+        var oLi = document.createElement('li');
+        oLi.innerHTML = '路飞';
+        $('ul').append(oLi);
+
+        //第三种方式
+        // 如果直接的内容是当前页面中的某些元素，那么这些元素将从原位置上消失。简言之，就是一个移动操作
+        $('ul').append($('span'));
+
+
+        // appendTo()方法
+        $('<a href="#">路飞2</a>').appendTo($('ul'));
+
+
+        // prepend()方法:插入到被选中元素的第一个位置
+        // 第一种写法：
+        $('ul').prepend('<li>我是第一个元素</li>');
+        // 第二种写法:
+        $('<li>我是第一个元素</li>').prependTo($('ul'));
+
+
+        //after before
+        // 在ul标签前面插了一个h2标签
+        $('ul').before('<h2>我是一个二级标题</h2>');
+        // 在ul标签后面（外面）插了一个h3标签
+        $('ul').after('<h3>我是一个三级标题</h3>');
+
+
+        // insertAfter
+        // 在</ul>后面插入了一个a标签
+        $('<a href="#">最后一个</a>').insertAfter($('ul'));
+
+        // insertBefore
+        // 在<ul>标签前面插入了一个a标签
+        $('<a href="#">第一个</a>').insertBefore($('ul'));
+
+
+        //2.复制操作 clone()
+        $('button').click(function () {
+            // $(this).clone().insertAfter($(this));
+            // 副本具有有真身一样的事件处理能力  true：完全克隆
+            $(this).clone(true).insertAfter($(this));  // 克隆出来的按钮，点击后也能克隆出按钮
+        })
+
+
+        //3.替换replaceWith
+        // $('h3').replaceWith('<button>替换的按钮</button>');
+
+        // $('<a href="#">替换的超链接</a>').replaceAll('button');  // 全部替换为超链接
+
+
+        //4.删除
+        // empty(): 清空元素中的所有后代节点(保留)
+        // $('ul').empty();
+
+        //remove():备选元素也被删掉了   事件没有了
+        // $('ul').remove();
+
+        //detach():移除匹配的节点元素  删除节点后，事件会保留
+        var $btn = $('button').detach();
+        console.log($btn[0]);  // <button>替换的按钮</button>
+
+        // $('ul').append($btn[0]);
+
+
+
+    })
+</script>
+</html>

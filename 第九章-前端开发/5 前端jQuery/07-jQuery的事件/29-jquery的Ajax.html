@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+    <button id="btn">演示</button>
+    <div id="box">
+
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // $('#btn').click(function(){
+        //     // 动态加载标签
+        //     // 只传一个url，导入的index.html文件含有多个传递参数，类似于：test/html?name='张三'
+        //     // $('#box').load('./test.html',{name:'张三'});
+        //     $('#box').load('./test.html');
+        // })
+
+
+        //get请求
+        // $.ajax({
+        //     url:'./data.json',
+        //     type:'get',
+        //     dataType:'json',
+        //     /*dataType:'text',
+        //     {
+        //       "arr":[
+        //         {
+        //           "name": "小马",
+        //           "age": 18
+        //         },
+        //         {
+        //           "name": "小马2",
+        //           "age": 18
+        //         },
+        //         {
+        //           "name": "小马3",
+        //           "age": 18
+        //         }
+        //       ]
+        //     }
+        //      */
+        //     success:function (data) {
+        //         console.log(data);   // 取到对象：{arr: Array(3)}
+        //     },
+        //     error:function () {
+        //
+        //     }
+        // })
+
+        // // 注意post请求无法演示，马上在django学习中可以演示
+        // $.ajax({
+        //     url:"/course",
+        //     type:'post',
+        //     data:{
+        //         username:'zhangsan',
+        //         password:'1234'
+        //     },
+        //     success:function (data) {
+        //
+        //         if(data.state == 'ok' && data.status == '200'){
+        //             // 登录成功
+        //         }
+        //     },
+        //     error:function (err) {
+        //         console.log(err);
+        //     }
+        // })
+
+
+    })
+</script>
+</html>

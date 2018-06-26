@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <button>点击</button>
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $('button').click(function () {
+        // 冒泡：在页面上仅点击了button。先触发了button的alert，后触发了box的alert。因此冒泡影响了页面效果。
+        // 需要阻止冒泡
+        alert('button事件触发了');
+    })
+    $('#box').click(function () {
+        alert('22222');
+    })
+</script>
+
+</html>

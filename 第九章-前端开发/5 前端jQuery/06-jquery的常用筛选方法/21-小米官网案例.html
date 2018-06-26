@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/* 清除默认样式 */
+			*{
+				padding: 0;
+				margin: 0;
+			}			
+			ul{list-style: none;}
+
+			.wrap{width: 980px;height: 612px;margin: 20px auto 0px;background: #f4f3f4;border: 1px solid gray;}
+		
+			ul li{float: left;margin-left: 10px;position: relative;overflow: hidden;/*超出部分隐藏*/width: 233px;height: 300px;}
+		
+			ul li p{	
+				width: 233px;
+				height: 100px;
+				background: rgba(245,102,51,.7);
+				position: absolute;
+				bottom: -100px;  /*将p标签里的内容盖住了*/
+				text-align: center;
+				color: white;
+				line-height: 100px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul>
+				<li><a href="#"><img src="images/xiaomi_01.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_02.png"/></a><p>百度一下，你就知道</p></li>
+				
+				<li><a href="#"><img src="images/xiaomi_03.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_04.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_05.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_07.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_08.png"/></a><p>百度一下，你就知道</p></li>
+				<li><a href="#"><img src="images/xiaomi_09.png"/></a><p>百度一下，你就知道</p></li>
+			</ul>
+		</div>
+	</body>
+	<script src="./jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		
+		//mouseenter进入调用，mouseleave离开调用————这两个方法实现hover
+		$('.wrap li').hover(function(){
+			// 第一个回调函数是mouseenter方法的实现
+            // stop()：在鼠标移入移出的时，在激活动画前，先停止动画，解决快速移动鼠标时，钢琴效果
+			$(this).children('p').stop(true).animate({bottom:0},100);
+
+		},function(){
+		    // 第二个回调函数是mouseleave方法的实现
+			$(this).children('p').stop(true).animate({bottom:-100},100); // 将p标签内容再次盖住
+
+		})
+		
+	</script>
+</html>

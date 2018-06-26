@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作</title>
+    <style type="text/css">
+        span.active {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>路飞学城</p>
+        <button>获取</button>
+
+        <ul>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+            <li class="luffy">路飞</li>
+        </ul>
+
+        <span>
+            路飞吧
+        </span>
+
+    </div>
+
+    <div id="box2">
+        哈哈
+        <p>我是一个段落</p>
+        <a href="">百度一下</a>
+        <input type="text" value="嘿嘿嘿" name=""/>
+        <button id="btn">GET</button>
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // addClass()添加类  removeClass()移除类
+        $('span').addClass("span2 span3");   // <span class="span2 span3">路飞吧</span>
+        $('span').removeClass('span2');
+
+        // 运用示例：点击添加类和删除类，添加类的时候，激活选择器，修改字体样式
+        var isBig = true;
+        $('span').click(function () {
+            if (isBig) {
+                $(this).addClass('active');
+                isBig = false;
+            } else {
+                $(this).removeClass('active');
+                isBig = true;
+            }
+        })
+
+
+        //4.值属性的操作 text() html() value()
+        // text()仅仅是获取文本
+        console.log($('#box2').text());
+        /*
+        哈哈
+        我是一个段落
+        百度一下
+         */
+
+        // html()获取了所有
+        console.log($('#box2').html());
+        /*
+        哈哈
+        <p>我是一个段落</p>
+        <a href="">百度一下</a>
+         */
+
+
+        // 设置值
+        // $('#box2').text('<a>路飞学城</a>');   // 设置文本
+        // $('#box2').html("<a href='#'>路飞学城</a>")  // 设置html
+
+        // 获取值 所有表单控件获取值默认方法是val()
+        console.log($('input').val());   // 嘿嘿嘿
+        $('input').val('嘿嘿个大头鬼');
+
+        $('#btn').click(function () {
+            var val = $('input').val();
+            // 设置上去
+            $('#box2').text(val);  // <div id="box2">嘿嘿个大头鬼</div>
+        })
+
+        // 表单控件使用的一个方法
+        $('input').change(function () {
+            console.log($(this).val())
+        })
+    })
+</script>
+</html>

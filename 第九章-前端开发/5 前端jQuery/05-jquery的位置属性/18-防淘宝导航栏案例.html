@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			div{width: 100%;}
+			div img{width: 100%;}
+		
+			.nav{display: none;}
+						
+		</style>
+	</head>
+	<body>
+		
+		<div class="top">
+			<img src="images/top.jpg" alt="" />
+			
+		</div>
+		<div class="nav">
+			<img src="images/nav.jpg"/>
+		</div>
+		<div class= 'taobao'>
+			<img src="images/taobao1.png"/>
+		</div>
+		
+		<script src="./jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+                var h = $('.top').height();
+
+                // 当用户滚动指定的元素时，会发生 scroll 事件。
+                // scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）
+                $(document).scroll(function () {
+                    //获取匹配元素相对滚动条顶部的偏移 文档被卷起的像素值
+			        var scollTp = $(document).scrollTop();
+
+			        if (h<scollTp) {
+			            $('.nav').css({display:'block',position:'fixed',top:0});
+                    } else {
+			            $('.nav').css({display:'none',position:'static',top:0});
+                    }
+                })
+			})
+		</script>
+	</body>
+</html>

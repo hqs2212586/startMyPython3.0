@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件流</title>
+    <script>
+
+    window.onload = function(){
+
+        // 取到DOM元素 js的DOM对象
+        var oBtn = document.getElementById('btn');
+
+        // addEventListener添加事件侦听器
+        // 第一个参数：click事件的名字  第二个参数：回调函数 触发事件发生的事情
+        // 第三个参数：true/false  true，表示在捕获阶段调用事件处理程序；如果是false，表示在冒泡阶段调用事件处理程序
+        oBtn.addEventListener('click',function(){
+            console.log('btn处于事件捕获阶段');
+        }, true);
+        oBtn.addEventListener('click',function(){
+            console.log('btn处于事件冒泡阶段');
+        }, false);
+
+        // 为文档增加事件
+        document.addEventListener('click',function(){
+            console.log('document处于事件捕获阶段');
+        }, true);
+        document.addEventListener('click',function(){
+            console.log('document处于事件冒泡阶段');
+        }, false);
+
+
+        // 为文档元素增加事件
+        document.documentElement.addEventListener('click',function(){
+            console.log('html处于事件捕获阶段');
+        }, true);
+        document.documentElement.addEventListener('click',function(){
+            console.log('html处于事件冒泡阶段');
+        }, false);
+
+        // 为body增加事件
+        document.body.addEventListener('click',function(){
+            console.log('body处于事件捕获阶段');
+        }, true);
+        document.body.addEventListener('click',function(){
+            console.log('body处于事件冒泡阶段');
+        }, false);
+
+    };
+
+    </script>
+</head>
+<body>
+    <a href="javascript:;" id="btn">按钮</a>
+</body>
+</html>

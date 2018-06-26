@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: gray;
+        }
+        #child {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="child">
+
+        </div>
+        <input type="text" value="123">
+        <br />
+        <input type="password">
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        /*
+        // 点击事件
+        $('#box').click(function () {
+            console.log('click');
+        })
+        // 双击事件 dblclick
+        $('#box').dblclick(function () {
+            console.log('dbclick');
+        })
+        */
+
+        /*
+        // 鼠标按下不松开
+        $('#box').mousedown(function () {
+            console.log('mousedown');
+        })
+        // 鼠标松开触发
+        $('#box').mouseup(function () {
+            console.log('mouseup');
+        })
+        */
+
+        /*
+        //被选元素和子元素被选中时会触发函数 移入移出
+        $('#box').mouseover(function () {
+            console.log('mouseover')
+        })
+        $('#box').mouseout(function () {
+            console.log('mouseout')
+        })
+        */
+
+        /*
+        //只有被选元素移入的时候才会触发，注意和mouseover/mouseout区分
+
+        // 鼠标指针只在穿过/离开被选元素触发事件
+        $('#box').mouseenter(function () {
+            console.log('mouseenter');
+        })
+        $('#box').mouseleave(function () {
+            console.log('mouseleave');
+        })
+        */
+
+        /*
+        // 实时监听鼠标移动事件（元素范围内） ————常用于做拖拽
+        $('#box').mousemove(function () {
+            console.log('mousemove');
+        })
+        */
+
+
+        // 鼠标聚焦/失去焦点触发事件（不支持冒泡）
+        // 获焦：文本输入框边框变蓝色
+        $('input[type=text]').focus(function () {
+            console.log($(this).val());
+        })
+
+        // 在文本框修改123为其他字符，然后在input元素外点击，完成失焦，console打印出修改后的字符串
+        $('input[type=text]').blur(function () {
+            console.log($(this).val());
+        })
+
+
+        // keydown键盘按下
+        $('input[type=password]').keydown(function () {
+            console.log($(this).val())   // 最开始按下1是取的是空值
+        })
+
+        $('input[type=password]').keyup(function () {
+            console.log($(this).val())   // 最开始按下1松开，取到了1
+        })
+        
+
+    })
+</script>
+</html>
